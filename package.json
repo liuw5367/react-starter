@@ -1,10 +1,20 @@
 {
   "private": true,
   "scripts": {
-    "dev": "umi dev",
     "build": "umi build",
+    "dev": "umi dev",
     "postinstall": "umi setup",
-    "start": "npm run dev"
+    "prepare": "husky install",
+    "start": "npm run dev",
+    "test": "jest"
+  },
+  "lint-staged": {
+    "*.{jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
   },
   "dependencies": {
     "umi": "^4.0.2"
@@ -12,15 +22,20 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
+    "@testing-library/react": "^12",
+    "@types/jest": "^27",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "husky": "^8.0.1",
-    "typescript": "^4.1.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm --version",
-      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
-    }
+    "@umijs/plugins": "^4.0.2",
+    "eslint": "^8.18.0",
+    "husky": "^8.0.0",
+    "jest": "^27",
+    "prettier": "^2",
+    "prettier-plugin-organize-imports": "^2",
+    "prettier-plugin-packagejson": "^2",
+    "stylelint": "^14.9.1",
+    "tailwindcss": "^3",
+    "ts-node": "^10",
+    "typescript": "^4"
   }
 }
