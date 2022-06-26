@@ -1,4 +1,4 @@
-import Test from './Test'
+import Test from './Test';
 
-export default Test
-export * from './Test' 
+export default Test;
+export * from './Test';
