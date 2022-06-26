@@ -20,7 +20,7 @@ module.exports = {
   ],
   plugins: ['simple-import-sort', 'prettier', 'react-hooks'],
   rules: {
-    'prettier/prettier': ['off', {}, { usePrettierrc: true }],
+    'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     'simple-import-sort/imports': 'error',
@@ -37,21 +37,25 @@ module.exports = {
     ],
     'no-unused-vars': ['off', { argsIgnorePattern: '^_' }], // 忽略 _ 开头的变量
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': [
-      'warn',
-      {
-        additionalHooks: 'useRecoilCallback',
-      },
-    ],
-    eqeqeq: ['warn', 'allow-null'],
+    'react-hooks/exhaustive-deps': ['warn', { additionalHooks: 'useRecoilCallback' }],
+    eqeqeq: ['error', 'allow-null'],
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/ban-types': 'warn',
     'require-yield': 'warn',
     'spaced-comment': 'error',
+    // 不允许多个空行
     'no-multiple-empty-lines': ['error', { max: 2, maxEOF: 1 }],
     'lines-between-class-members': ['error', 'always'],
     // 禁用行尾空白
     'no-trailing-spaces': 'error',
+    // 解构优先
+    'prefer-destructuring': [
+      'off',
+      {
+        VariableDeclarator: { array: true, object: true },
+        AssignmentExpression: { array: false, object: false },
+      },
+    ],
   },
 };

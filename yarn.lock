@@ -1941,7 +1941,7 @@
     "@umijs/bundler-utils" "4.0.2"
     "@umijs/utils" "4.0.2"
 
-"@umijs/lint@4.0.2":
+"@umijs/lint@4.0.2", "@umijs/lint@^4.0.2":
   version "4.0.2"
   resolved "https://registry.npmmirror.com/@umijs/lint/-/lint-4.0.2.tgz#1f7da5b3481ffd98c1d2793f0fc23e69dc6b0b75"
   integrity sha512-45Y+yEDWp9uUPHHAkI709B+gXOqOP838FixoRVizKlplK9fT6UtkdpFN98x34nr0/L5jxitO2BH8Y9wwCBuQRQ==
@@ -7606,7 +7606,7 @@ postcss-syntax@0.36.2:
   resolved "https://registry.npmmirror.com/postcss-syntax/-/postcss-syntax-0.36.2.tgz#f08578c7d95834574e5593a82dfbfa8afae3b51c"
   integrity sha512-nBRg/i7E3SOHWxF3PpF5WnJM/jQ1YpY9000OaVXlAQj6Zp/kIqJxEDWIZ67tAd7NLuk7zqN4yqe9nc0oNAOs1w==
 
-postcss-value-parser@^4.1.0, postcss-value-parser@^4.2.0:
+postcss-value-parser@4.2.0, postcss-value-parser@^4.1.0, postcss-value-parser@^4.2.0:
   version "4.2.0"
   resolved "https://registry.npmmirror.com/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz#723c09920836ba6d3e5af019f92bc0971c02e514"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
@@ -7645,7 +7645,7 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier-plugin-organize-imports@^2, prettier-plugin-organize-imports@^2.3.4:
+prettier-plugin-organize-imports@^2.3.4:
   version "2.3.4"
   resolved "https://registry.npmmirror.com/prettier-plugin-organize-imports/-/prettier-plugin-organize-imports-2.3.4.tgz#65473861ae5ab7960439fff270a2258558fbe9ba"
   integrity sha512-R8o23sf5iVL/U71h9SFUdhdOEPsi3nm42FD/oDYIZ2PQa4TNWWuWecxln6jlIQzpZTDMUeO1NicJP6lLn2TtRw==
@@ -9129,6 +9129,14 @@ stylelint-config-standard@^26.0.0:
   integrity sha512-hUuB7LaaqM8abvkOO84wh5oYSkpXgTzHu2Zza6e7mY+aOmpNTjoFBRxSLlzY0uAOMWEFx0OMKzr+reG1BUtcqQ==
   dependencies:
     stylelint-config-recommended "^8.0.0"
+
+stylelint-less@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.npmmirror.com/stylelint-less/-/stylelint-less-1.0.6.tgz#8397d9320cb89638233ca7f67268f2948b3f0964"
+  integrity sha512-lL+4HFP8V6WkXuNGXRAirnW83KQYEE6LpBsOCibka0bFHUh2mIcJXwcc4uQu1c9UUopHr8vjIH2YElW61lQBXg==
+  dependencies:
+    postcss "^8.4.14"
+    postcss-value-parser "4.2.0"
 
 stylelint-order@^3.1.1:
   version "3.1.1"
