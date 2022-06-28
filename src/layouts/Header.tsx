@@ -1,6 +1,7 @@
 import { Layout, Menu } from 'antd';
 import { useLocation } from 'umi';
 
+import HeaderRight from './HeaderRight';
 import { menuItems } from './Sidebar';
 
 export default function Header() {
@@ -12,6 +13,7 @@ export default function Header() {
         React Template
       </div>
       <Menu className="flex-1" theme="dark" mode="horizontal" selectedKeys={[pathname]} items={menuItems} />
+      <HeaderRight />
     </Layout.Header>
   );
 }

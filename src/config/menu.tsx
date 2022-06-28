@@ -25,4 +25,14 @@ export const menuConfig: MenuItem[] = [
       { title: 'Umi', link: 'https://umijs.org', key: 'Umi', icon: 'LinkOutlined' },
     ],
   },
+  {
+    title: 'ProLayout',
+    link: '/pro',
+    key: 'ProLayout',
+    icon: 'NotificationOutlined',
+    children: [
+      { title: 'Pro1', link: '/pro/1', key: '/pro/1' },
+      { title: 'Pro2', link: '/pro/2', key: '/pro/2' },
+    ],
+  },
 ];

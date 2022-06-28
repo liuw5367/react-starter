@@ -1,3 +1,5 @@
+import type { Route } from '@ant-design/pro-layout/lib/typings';
+
 export interface RouteItem {
   /** 面包屑使用 */
   title?: string;
@@ -28,6 +30,32 @@ export const routes: RouteItem[] = [
       NotFoundRoute,
     ],
   },
+  { exact: true, path: '/pro/1', title: 'Pro1', component: '@/pages/pro/pro1' },
+  { exact: true, path: '/pro/2', title: 'Pro2', component: '@/pages/pro/pro2' },
 
   NotFoundRoute,
 ];
+
+/**
+ * antDesign 菜单配置，自动生成面包屑
+ */
+export const antDesignProRoutes: Route = {
+  path: '/',
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      // icon: <CrownOutlined />,
+    },
+    { path: '/todo', name: 'Todo' },
+    { path: '/login', name: 'Login' },
+    {
+      path: '/pro',
+      name: 'ProLayout',
+      routes: [
+        { path: '/pro/1', name: 'Pro1' },
+        { path: '/pro/2', name: 'Pro2' },
+      ],
+    },
+  ],
+};

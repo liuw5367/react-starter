@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'umi';
 
 import Content from './Content';
 import Header from './Header';
+import ProLayout from './ProLayout';
 import SiderBar from './Sidebar';
 
 export default function Index() {
@@ -13,6 +14,14 @@ export default function Index() {
 
   if (pathname === '/login') {
     return <Outlet />;
+  }
+
+  if (pathname.startsWith('/')) {
+    return (
+      <ProLayout>
+        <Outlet />
+      </ProLayout>
+    );
   }
 
   return (
