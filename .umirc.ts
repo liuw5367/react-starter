@@ -1,22 +1,21 @@
 import { defineConfig } from 'umi';
+import { routes } from './src/config';
+import { APP_NAME } from './src/constants';
 
 export default defineConfig({
   plugins: ['@umijs/plugins/dist/dva', '@umijs/plugins/dist/antd', '@umijs/plugins/dist/unocss'],
+  title: APP_NAME,
   hash: true,
+  routes,
   dva: {},
-  unocss: {
-    // 添加其他包含 unocss 的 classname 的文件目录
-    watch: ['src/**/*.tsx'],
-  },
+  unocss: { watch: ['src/**/*.tsx', 'src/**/*.jsx'] },
   antd: {
-    // configProvider
     configProvider: {},
     // themes
     dark: false,
-    compact: true,
+    compact: false,
     // babel-plugin-import
     import: true,
-    // less or css, default less
     style: 'less',
   },
   proxy: {

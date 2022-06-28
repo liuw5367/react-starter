@@ -1,3 +1,4 @@
+import type { TodoModelType } from '@/pages/todo/model';
 import type { GetRootState, ModelTypeObj } from '@/types';
 
 import type { GlobalModelType } from './global';
@@ -5,7 +6,7 @@ import type { GlobalModelType } from './global';
 /**
  * 在这里注册所有的 ModelType
  */
-type Models = [GlobalModelType];
+type Models = [GlobalModelType, TodoModelType];
 
 /**
  * 所有的 ModelType

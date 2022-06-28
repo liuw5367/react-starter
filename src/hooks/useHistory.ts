@@ -1,5 +1,8 @@
-import { useNavigate } from 'umi';
+import { history } from 'umi';
 
+/**
+ * 考虑使用 useNavigate()
+ */
 export function useHistory() {
-  return useNavigate();
+  return history;
 }

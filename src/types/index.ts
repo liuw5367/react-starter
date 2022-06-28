@@ -2,11 +2,11 @@ export * from './action';
 export * from './redux';
 
 export interface MenuItem {
+  key: string;
   title: string;
   link: string;
-  key: string;
-  icon: string;
-  children: any;
+  icon?: string;
+  children?: MenuItem[];
   disabled?: boolean;
 }
 

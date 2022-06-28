@@ -101,7 +101,7 @@ export type Reducer<S = any, A extends Action = any> = (state: S, action: A) => 
 export type Effect<P = any, M extends ModelType = any> = (
   action: Action<P>,
   effects: EffectsCommandMap<M>,
-) => Generator<any, any, any>;
+) => Generator<any, any, any> | void;
 export type EffectWithType<P = any, M extends ModelType = any> = [Effect<P, M>, { type: EffectType }];
 export type EffectsMapObject = Record<string, Effect | EffectWithType>;
 export type ReducersMapObject<State = any, A extends Action = any> = {
@@ -137,13 +137,13 @@ export interface Model<State = any> {
 /**
  * 所有的 Model 都应继承自 ModelType
  */
-export interface ModelType {
-  namespace: string;
-  state: any;
+export interface ModelType<N extends string = any, S = any, E extends object = {}, R extends object = { save: S }> {
+  namespace: N;
+  state: S;
   /** 值为 payload 传参 */
-  effects: Record<string, any>;
+  effects: E;
   /** 值为 payload 传参 */
-  reducers: Record<string, any>;
+  reducers: R;
 }
 
 /**

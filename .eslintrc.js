@@ -25,6 +25,7 @@ module.exports = {
     'react/prop-types': 'off',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
+    'jsx-a11y/no-static-element-interactions': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/accessible-emoji': 'off',
     'jsx-a11y/anchor-is-valid': [

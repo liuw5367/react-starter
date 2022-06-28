@@ -1,9 +1,10 @@
-import type { BaseModel, ModelType } from '@/types';
+import type { BaseModel, MenuItem, ModelType } from '@/types';
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 export interface GlobalModelState {
   permissions: string[];
+  menus: MenuItem[];
   num: number;
 }
 
@@ -23,6 +24,7 @@ const Model: BaseModel<GlobalModelType> = {
   namespace: 'global',
   state: {
     permissions: [],
+    menus: [],
     num: 0,
   },
   reducers: {

@@ -1,23 +1,29 @@
-import { Link, Outlet } from 'umi';
+import { Layout } from 'antd';
+import { Outlet, useLocation } from 'umi';
 
-import styles from './index.less';
+import Content from './Content';
+import Header from './Header';
+import SiderBar from './Sidebar';
 
-export default function Layout() {
+export default function Index() {
+  let { pathname } = useLocation();
+  if (pathname.endsWith('/')) {
+    pathname = pathname.substring(0, pathname.length - 1);
+  }
+
+  if (pathname === '/login') {
+    return <Outlet />;
+  }
+
   return (
-    <div className={styles.navs}>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/docs">Docs</Link>
-        </li>
-        <li>
-          <a href="https://github.com/umijs/umi">Github</a>
-        </li>
-        <li>about</li>
-      </ul>
-      <Outlet />
-    </div>
+    <Layout>
+      <Header />
+      <Layout style={{ height: 'calc(100vh - var(--headerHeight))' }}>
+        <SiderBar />
+        <Content>
+          <Outlet />
+        </Content>
+      </Layout>
+    </Layout>
   );
 }
