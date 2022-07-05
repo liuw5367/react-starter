@@ -1,3 +1,4 @@
+import zh_CN from 'antd/lib/locale/zh_CN';
 import { defineConfig } from 'umi';
 import { routes } from './src/config';
 import { APP_NAME } from './src/constants';
@@ -10,7 +11,9 @@ export default defineConfig({
   dva: {},
   unocss: { watch: ['src/**/*.tsx', 'src/**/*.jsx'] },
   antd: {
-    configProvider: {},
+    configProvider: {
+      locale: zh_CN,
+    },
     // themes
     dark: false,
     compact: false,
@@ -18,6 +21,7 @@ export default defineConfig({
     import: true,
     style: 'less',
   },
+  mock: { include: ['src/mock/**/*.ts', 'src/pages/**/_mock.ts'] },
   proxy: {
     /*
     '/api': {

@@ -1,10 +1,11 @@
 import { CrownOutlined } from '@ant-design/icons';
 import { ProLayout } from '@ant-design/pro-layout';
 import type { Route } from '@ant-design/pro-layout/lib/typings';
+import { Avatar } from 'antd';
 import type React from 'react';
 import { useLocation, useNavigate } from 'umi';
 
-import { antDesignProRoutes } from '@/config';
+import { proRoutes } from '@/config';
 import { APP_NAME } from '@/constants';
 
 import HeaderRight from './HeaderRight';
@@ -35,16 +36,16 @@ export default function Index(props: Props) {
       fixedHeader={true}
       // 将菜单分割成两部分，顶部和侧边栏
       splitMenus={false}
-      route={antDesignProRoutes}
-      logo={<CrownOutlined />}
       location={{ pathname }}
+      route={proRoutes}
+      menuItemRender={renderMenuItem}
+      logo={<Avatar shape="circle" style={{ color: '#f56a00', backgroundColor: '#fde3cf' }} icon={<CrownOutlined />} />}
       headerTitleRender={() => (
         <div>
           <CrownOutlined className="mr-2" />
           {APP_NAME}
         </div>
       )}
-      menuItemRender={renderMenuItem}
       rightContentRender={() => <HeaderRight />}
       // onMenuHeaderClick={(e) => console.log(e)}
       // headerContentRender={() => <div>headerContentRender()</div>}

@@ -1,5 +1,8 @@
 import { Layout } from 'antd';
-import { Outlet, useLocation } from 'umi';
+import { Navigate, Outlet, useLocation } from 'umi';
+
+import { useQuery } from '@/hooks';
+import { isLogin } from '@/utils';
 
 import Content from './Content';
 import Header from './Header';
@@ -7,13 +10,23 @@ import ProLayout from './ProLayout';
 import SiderBar from './Sidebar';
 
 export default function Index() {
-  let { pathname } = useLocation();
+  const location = useLocation();
+  const query = useQuery();
+  let { pathname } = location;
   if (pathname.endsWith('/')) {
     pathname = pathname.substring(0, pathname.length - 1);
   }
 
   if (pathname === '/login') {
-    return <Outlet />;
+    if (isLogin()) {
+      return <Navigate to={query('redirect') || ''} />;
+    } else {
+      return <Outlet />;
+    }
+  }
+
+  if (!isLogin()) {
+    return <Navigate to={`/login?redirect=${location.pathname}${location.search ? `/${location.search}` : ''}`} />;
   }
 
   if (pathname.startsWith('/')) {

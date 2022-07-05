@@ -1,4 +1,6 @@
+import { logout } from '@/services/user';
 import type { BaseModel, MenuItem, ModelType } from '@/types';
+import { clearCacheOnLogout } from '@/utils';
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
@@ -17,6 +19,7 @@ export interface GlobalModelType extends ModelType {
   };
   effects: {
     addAsync: void;
+    logout: void;
   };
 }
 
@@ -39,6 +42,11 @@ const Model: BaseModel<GlobalModelType> = {
     *addAsync(action, { put }) {
       yield delay(1000);
       yield put({ type: 'add', payload: { num: 1 } });
+    },
+    *logout() {
+      yield logout();
+      clearCacheOnLogout();
+      window.location.href = '/';
     },
   },
 };

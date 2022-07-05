@@ -98,18 +98,18 @@ export interface SubscriptionAPI {
 }
 
 export type Reducer<S = any, A extends Action = any> = (state: S, action: A) => S | void;
-export type Effect<P = any, M extends ModelType = any> = (
+export type Effect<P = any, M extends ModelType = any, R = any> = (
   action: Action<P>,
   effects: EffectsCommandMap<M>,
-) => Generator<any, any, any> | void;
-export type EffectWithType<P = any, M extends ModelType = any> = [Effect<P, M>, { type: EffectType }];
+) => Generator<any, R, any> | void;
+export type EffectWithType<P = any, M extends ModelType = any, R = any> = [Effect<P, M, R>, { type: EffectType }];
 export type EffectsMapObject = Record<string, Effect | EffectWithType>;
 export type ReducersMapObject<State = any, A extends Action = any> = {
   [K in keyof State]: Reducer<State[K], A>;
 };
 
 export type UseSelectorFunction = <R>(fn: (state: RootState) => R) => R;
-export type SelectFunction = <R>(state: RootState) => R;
+export type SelectFunction = (state: RootState) => any;
 
 export interface EffectsCommandMap<M extends ModelType = any> {
   put: PutDispatch<M>;
@@ -155,8 +155,12 @@ export interface BaseModel<T extends ModelType> extends Model<T['state']> {
   effects: {
     /* 将泛型参数赋给 Effect */
     [K in keyof T['effects']]:
-      | Effect<GetEffectParamValue<T['effects'][K], 'param'>, T>
-      | EffectWithType<GetEffectParamValue<T['effects'][K], 'param'>, T>;
+      | Effect<GetEffectParamValue<T['effects'][K], 'param'>, T, GetEffectParamValue<T['effects'][K], 'return', any>>
+      | EffectWithType<
+          GetEffectParamValue<T['effects'][K], 'param'>,
+          T,
+          GetEffectParamValue<T['effects'][K], 'return', any>
+        >;
   };
   reducers: {
     /* 将泛型参数赋给 Reducer */

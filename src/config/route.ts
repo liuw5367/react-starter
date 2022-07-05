@@ -37,9 +37,9 @@ export const routes: RouteItem[] = [
 ];
 
 /**
- * antDesign 菜单配置，自动生成面包屑
+ * ProLayout 菜单配置，自动生成面包屑
  */
-export const antDesignProRoutes: Route = {
+export const proRoutes: Route = {
   path: '/',
   routes: [
     {
@@ -55,6 +55,23 @@ export const antDesignProRoutes: Route = {
       routes: [
         { path: '/pro/1', name: 'Pro1' },
         { path: '/pro/2', name: 'Pro2' },
+      ],
+    },
+    {
+      target: '/link',
+      name: 'Link1',
+      routes: [
+        { path: 'https://umijs.org', target: 'a', name: 'Umi' },
+        { path: 'https://github.com/liuw5367/react-template', target: 'a', name: 'Github' },
+      ],
+    },
+    {
+      target: '/link',
+      name: 'Link2',
+      flatMenu: true,
+      routes: [
+        { path: 'https://umijs.org', target: 'a', name: 'Umi' },
+        { path: 'https://github.com/liuw5367/react-template', target: 'a', name: 'Github' },
       ],
     },
   ],
