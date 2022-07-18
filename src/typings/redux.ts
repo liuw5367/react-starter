@@ -166,6 +166,8 @@ export interface BaseModel<T extends ModelType> extends Model<T['state']> {
     /* 将泛型参数赋给 Reducer */
     [K in keyof T['reducers']]: Reducer<T['state'], Action<T['reducers'][K]>>;
   };
+  /** 该变量只是为了获取 T 的类型，非必需，所以使用了问号 */
+  modelType?: T;
 }
 
 /**

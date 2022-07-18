@@ -1,14 +1,14 @@
-import { HomeOutlined, LinkedinOutlined, NotificationOutlined } from '@ant-design/icons';
+import { HomeOutlined, LinkOutlined, NotificationOutlined } from '@ant-design/icons';
 import { Layout, Menu, MenuProps } from 'antd';
 import { Link, useLocation } from 'umi';
 
 import { menuConfig } from '@/config';
-import type { MenuItem } from '@/types';
+import type { MenuItem } from '@/typings';
 
 export function getMenuIcon(icon?: string) {
   if (!icon) return undefined;
   if (icon.toLocaleLowerCase().includes('home')) return <HomeOutlined />;
-  if (icon.toLocaleLowerCase().includes('link')) return <LinkedinOutlined />;
+  if (icon.toLocaleLowerCase().includes('link')) return <LinkOutlined />;
   return <NotificationOutlined />;
 }
 

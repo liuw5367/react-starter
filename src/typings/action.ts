@@ -1,7 +1,7 @@
 import type { RootModelType } from '@/models';
-import type { ModelType } from '@/types/redux';
+import type { ModelType } from '@/typings/redux';
 
-import type { ValueOf } from './';
+import type { ValueOf } from '.';
 
 // 模版字符串拼接 'keyof XX' 会报错
 // 使用 '(keyof XX) & string' 取字符串
@@ -13,7 +13,7 @@ import type { ValueOf } from './';
  *  [namespace]: ModelType
  * }
  */
-export type ModelTypeObj<T extends ModelType[]> = {
+export type GetRootModelType<T extends ModelType[]> = {
   [P in T[number] as P['namespace']]: P;
 };
 

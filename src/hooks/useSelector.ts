@@ -1,6 +1,6 @@
 import { useSelector as useSelectorFn } from 'umi';
 
-import type { UseSelectorFunction } from '@/types';
+import type { UseSelectorFunction } from '@/typings';
 
 /**
  * 添加 RootState 类型

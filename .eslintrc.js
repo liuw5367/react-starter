@@ -2,12 +2,19 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2020,
+    ecmaVersion: 12, // 2021
     sourceType: 'module',
     ecmaFeatures: { jsx: true },
   },
   settings: {
     react: { version: 'detect' },
+    // support import modules from TypeScript files in JavaScript files
+    'import/resolver': {
+      node: { extensions: ['.js', '.jsx', '.ts', '.tsx', '.d.ts'] },
+    },
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx', '.d.ts'],
+    },
   },
   env: { browser: true, node: true, es6: true, mocha: true, jest: true, jasmine: true },
   extends: [
