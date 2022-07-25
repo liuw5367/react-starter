@@ -24,6 +24,7 @@ module.exports = {
     'less/color-no-invalid-hex': true,
     'less/no-duplicate-variables': true,
     'color-no-invalid-hex': true,
+    'selector-pseudo-class-no-unknown': [true, { ignorePseudoClasses: ['global'] }],
 
     /*
     'max-empty-lines': 1, // 禁止多余的空行, 限制相邻空行的数量。

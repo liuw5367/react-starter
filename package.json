@@ -35,9 +35,13 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@ant-design/pro-layout": "^6.38.9",
+    "ahooks": "^3.5.1",
     "antd": "^4.21.3",
     "axios": "^0.27.2",
-    "umi": "^4.0.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "ts-toolbelt": "^9.6.0",
+    "umi": "^4.0.7"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
@@ -48,6 +52,8 @@
     "@types/mockjs": "^1.0.6",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
     "@umijs/lint": "^4.0.2",
     "@umijs/plugins": "^4.0.2",
     "eslint": "^8.18.0",
