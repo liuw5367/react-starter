@@ -3,7 +3,7 @@ import { Layout, Menu, MenuProps } from 'antd';
 import { Link, useLocation } from 'umi';
 
 import { menuConfig } from '@/config';
-import type { MenuItem } from '@/typings';
+import type { MenuItem } from '@/types';
 
 export function getMenuIcon(icon?: string) {
   if (!icon) return undefined;

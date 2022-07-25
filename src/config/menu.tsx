@@ -1,4 +1,4 @@
-import type { MenuItem } from '@/typings';
+import type { MenuItem } from '@/types';
 
 export const menuConfig: MenuItem[] = [
   { title: 'Home', link: '/', key: '/', icon: 'HomeOutlined' },

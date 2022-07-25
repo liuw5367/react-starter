@@ -1,5 +1,5 @@
 import { login, logout } from '@/services/user';
-import { BaseModel, EffectParam, generator, MenuItem, ModelType, PromiseReturnType, selectWrapper } from '@/typings';
+import { BaseModel, EffectParam, generator, MenuItem, ModelType, PromiseReturnType, selectWrapper } from '@/types';
 import { clearCacheOnLogout } from '@/utils';
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));

@@ -1,6 +1,6 @@
 import { useDispatch as useDispatchFn } from 'umi';
 
-import type { Dispatch } from '@/typings';
+import type { Dispatch } from '@/types';
 
 /**
  * 支持对 dva 的限制

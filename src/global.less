@@ -16,6 +16,7 @@ body,
   height: 100vh;
   margin: 0;
 
+  /*
   ::-webkit-scrollbar {
     width: 8px !important;
     height: 8px !important;
@@ -33,9 +34,37 @@ body,
   ::-webkit-scrollbar-thumb:hover {
     background-color: rgba(0, 0, 0, 55%);
   }
+  */
 }
 
 .ant-modal-body {
   max-height: 70vh;
   overflow-y: auto;
+}
+
+.page-content {
+  overflow: auto;
+  padding: 24px;
+  background-color: white;
+}
+
+.filter-form {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 8px !important;
+
+  > * {
+    display: flex;
+    flex-flow: row wrap;
+
+    > *:not(:last-child) {
+      margin-right: 16px;
+    }
+
+    > * {
+      margin-bottom: 8px;
+    }
+  }
 }

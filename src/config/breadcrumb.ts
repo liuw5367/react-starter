@@ -1,4 +1,4 @@
-import type { LabelValueItem } from '@/typings';
+import type { LabelValueItem } from '@/types';
 
 import { RouteItem, routes } from './route';
 

@@ -12,3 +12,16 @@ export async function logout() {
     method: 'POST',
   });
 }
+
+export interface ModifyPasswordRequest {
+  oldPassword: string;
+  password: string;
+  userId?: string;
+}
+
+export async function modifyPassword(data: ModifyPasswordRequest) {
+  return request(`/user/password`, {
+    method: 'POST',
+    data,
+  });
+}

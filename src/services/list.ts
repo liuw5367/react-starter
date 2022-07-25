@@ -1,5 +1,5 @@
-import type { PageBody, PageRequest } from '@/services/typings';
-import { download, request } from '@/utils/HttpClient';
+import type { PageBody, PageRequest } from '@/services';
+import { downloadFile, request } from '@/utils/HttpClient';
 
 export interface ListRequest extends PageRequest {
   name?: string;
@@ -24,5 +24,5 @@ export async function test() {
 }
 
 export async function exportFile() {
-  return download('/download');
+  return downloadFile('/download');
 }
