@@ -1,5 +1,7 @@
 import { PageContainer } from '@ant-design/pro-layout';
 
+import UserPage from './../setting/user';
+
 export default function HomePage() {
   return (
     <PageContainer
@@ -22,7 +24,7 @@ export default function HomePage() {
       //   { tab: '禁用', key: '3', disabled: true },
       // ]}
     >
-      Welcome !
+      <UserPage />
     </PageContainer>
   );
 }

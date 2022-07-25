@@ -1,4 +1,4 @@
-import { Layout } from 'antd';
+import { Layout, message } from 'antd';
 import { Navigate, Outlet, useLocation } from 'umi';
 
 import { useQuery } from '@/hooks';
@@ -19,6 +19,7 @@ export default function Index() {
 
   if (pathname === '/login') {
     if (isLogin()) {
+      message.success('已登陆');
       return <Navigate to={query('redirect') || ''} />;
     } else {
       return <Outlet />;

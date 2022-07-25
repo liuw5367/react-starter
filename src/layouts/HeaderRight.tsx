@@ -1,37 +1,24 @@
 import { CrownOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icons';
-import { Avatar, Dropdown, Menu, Modal, Space } from 'antd';
+import { Avatar, Dropdown, Form, Menu, message, Modal, Space } from 'antd';
 import { useState } from 'react';
 
 import { useDispatch } from '@/hooks';
+import { modifyPassword } from '@/services/user';
+
+import PasswordSettingForm from './PasswordSettingForm';
 
 export default function HeaderRight() {
   const dispatch = useDispatch();
   const [logoutVisible, setLogoutVisible] = useState(false);
-  const [menuItems] = useState([
-    {
-      key: 'password',
-      label: (
-        <Space>
-          <SettingOutlined />
-          设置密码
-        </Space>
-      ),
-    },
-    {
-      key: 'logout',
-      label: (
-        <Space>
-          <LogoutOutlined />
-          退出登录
-        </Space>
-      ),
-    },
-  ]);
+  const [form] = Form.useForm();
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   function handleMenuClick(event: { key: string }) {
     const { key } = event;
     if (key === 'logout') {
       setLogoutVisible(true);
+    } else if (key === 'password') {
+      setPasswordVisible(true);
     }
   }
 
@@ -40,9 +27,58 @@ export default function HeaderRight() {
     dispatch({ type: 'global/logout' });
   }
 
+  function handlePasswordCancel() {
+    form.resetFields();
+    setPasswordVisible(false);
+  }
+
+  function handlePasswordOk() {
+    form.validateFields().then(async (values) => {
+      const { password, newPassword, verifyNewPassword } = values;
+      if (newPassword !== verifyNewPassword) {
+        message.warn('新密码不一致，请核对后重新输入');
+        return;
+      }
+      const userId = '1';
+      const response = await modifyPassword({ oldPassword: password, password: newPassword, userId });
+      if (response.success) {
+        message.success('修改成功');
+        form.resetFields();
+        setPasswordVisible(false);
+      }
+    });
+  }
+
+  const menu = (
+    <Menu
+      onClick={handleMenuClick}
+      items={[
+        {
+          key: 'password',
+          label: (
+            <Space>
+              <SettingOutlined />
+              设置密码
+            </Space>
+          ),
+        },
+        { type: 'divider' },
+        {
+          key: 'logout',
+          label: (
+            <Space>
+              <LogoutOutlined />
+              退出登录
+            </Space>
+          ),
+        },
+      ]}
+    />
+  );
+
   return (
     <div>
-      <Dropdown placement="bottomRight" overlay={<Menu onClick={handleMenuClick} items={menuItems} />}>
+      <Dropdown placement="bottomRight" overlay={menu}>
         <Avatar
           shape="circle"
           size="small"
@@ -50,6 +86,15 @@ export default function HeaderRight() {
           icon={<CrownOutlined />}
         />
       </Dropdown>
+      <Modal
+        visible={passwordVisible}
+        title={'设置密码'}
+        onCancel={handlePasswordCancel}
+        onOk={handlePasswordOk}
+        destroyOnClose={true}
+      >
+        <PasswordSettingForm form={form} />
+      </Modal>
       <Modal
         visible={logoutVisible}
         title={'退出登录'}

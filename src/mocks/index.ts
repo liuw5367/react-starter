@@ -16,12 +16,16 @@ export default defineMock({
     });
   },
   'GET /api/list': (req, res) => {
-    const { current = 1, size = 10 } = req.params;
+    const { current = 1, size = 10 } = req.query;
+    const total = 12345;
+    const pageNum = Number(current);
+    const pageSize = Number(size);
+
     res.json({
       code: 0,
       message: 'ok',
       data: {
-        list: Array(12345 % Number(size))
+        list: Array(Number(pageNum) * Number(pageSize) > total ? total % Number(pageSize) : Number(pageSize))
           .fill(1)
           .map(() => ({
             id: Random.id(),
@@ -30,8 +34,9 @@ export default defineMock({
             birth: Random.datetime('yyyy-MM-dd HH:mm:ss'),
             email: Random.email(),
           })),
-        total: 12345,
-        pageNum: current,
+        total,
+        size: pageSize,
+        current: pageNum,
       },
     });
   },
