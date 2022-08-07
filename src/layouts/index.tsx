@@ -30,7 +30,7 @@ export default function Index() {
     return <Navigate to={`/login?redirect=${location.pathname}${location.search ? `/${location.search}` : ''}`} />;
   }
 
-  if (pathname.startsWith('/')) {
+  if (pathname.startsWith('/pro')) {
     return (
       <ProLayout>
         <Outlet />

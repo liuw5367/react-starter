@@ -8,8 +8,7 @@ import { ConfigProvider, message, notification } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
 import { GlobalScrollbar } from 'mac-scrollbar';
 import moment from 'moment';
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { useRoutes } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 
 import { routes } from './config';
@@ -23,17 +22,15 @@ notification.config({ duration: 2 });
 message.config({ duration: 2 });
 
 export default function App() {
+  const route = useRoutes(routes);
+
   return (
-    <React.StrictMode>
-      <ConfigProvider locale={zhCN}>
-        {/* macos style scroll bar */}
-        <GlobalScrollbar />
-        <RecoilRoot>
-          <DvaRoot>
-            <BrowserRouter>{routes}</BrowserRouter>
-          </DvaRoot>
-        </RecoilRoot>
-      </ConfigProvider>
-    </React.StrictMode>
+    <ConfigProvider locale={zhCN}>
+      {/* macos style scroll bar */}
+      <GlobalScrollbar />
+      <RecoilRoot>
+        <DvaRoot>{route}</DvaRoot>
+      </RecoilRoot>
+    </ConfigProvider>
   );
 }

@@ -1,48 +1,20 @@
 import type { Route as ProRoute } from '@ant-design/pro-layout/lib/typings';
-import { Route, Routes } from 'react-router-dom';
+import { Route, RouteObject, Routes } from 'react-router-dom';
 
 import Layout from '@/layouts';
-import NotFound404 from '@/pages/404';
+import NotFound from '@/pages/404';
 import Home from '@/pages/index';
 import Login from '@/pages/login';
 import Pro1 from '@/pages/pro/pro1';
 import Pro2 from '@/pages/pro/pro2';
+import SettingUser from '@/pages/setting/user';
+import Todo from '@/pages/todo';
 
-export interface RouteItem {
+export interface RouteItem extends RouteObject {
   /** 面包屑使用 */
   title?: string;
-  /** 路由地址 */
-  path: string;
-  component?: string;
-  exact?: boolean;
-  routes?: RouteItem[];
-  microApp?: string;
+  children?: RouteItem[];
 }
-
-const NotFoundRoute: RouteItem = { path: '*', title: '404', component: '@/pages/404' };
-
-/**
- * umi4 里所有路由默认都走 @/layout ?
- */
-export const umiRoutes: RouteItem[] = [
-  { exact: true, path: '/', title: 'Home', component: '@/pages/index' },
-  { exact: true, path: '/login', component: '@/pages/login' },
-  { exact: true, path: '/todo', title: 'Todo', component: '@/pages/todo' },
-  {
-    path: '/setting',
-    title: 'Setting',
-    routes: [
-      //
-      { exact: true, path: '/setting/user', title: 'Users', component: '@/pages/setting/user' },
-
-      NotFoundRoute,
-    ],
-  },
-  { exact: true, path: '/pro/1', title: 'Pro1', component: '@/pages/pro/pro1' },
-  { exact: true, path: '/pro/2', title: 'Pro2', component: '@/pages/pro/pro2' },
-
-  NotFoundRoute,
-];
 
 /**
  * ProLayout 菜单配置，自动生成面包屑
@@ -73,7 +45,7 @@ export const proRoutes: ProRoute = {
   ],
 };
 
-export const routes = (
+export const routes1 = (
   <Routes>
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
@@ -87,10 +59,42 @@ export const routes = (
         <Route path="user" element={<SettingUser />} />
         <Route path="*" element={<NotFound404 />} />
       </Route> */}
-      <Route path="*" element={<NotFound404 />} />
+      <Route path="*" element={<NotFound />} />
     </Route>
     {/* <Route element={<BaseLayout />}> */}
     <Route path="login" element={<Login />} />
     {/* </Route> */}
   </Routes>
 );
+
+export const routes: RouteItem[] = [
+  { path: '/login', element: <Login /> },
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: '/todo', element: <Todo /> },
+      {
+        path: 'pro',
+        children: [
+          { path: '/pro/1', element: <Pro1 /> },
+          { path: '/pro/2', element: <Pro2 /> },
+
+          { path: '*', element: <NotFound /> },
+        ],
+      },
+      {
+        path: 'setting',
+        title: 'setting',
+        children: [
+          { path: '/setting/user', title: 'user', element: <SettingUser /> },
+
+          { path: '*', element: <NotFound /> },
+        ],
+      },
+
+      { path: '*', element: <NotFound /> },
+    ],
+  },
+];
