@@ -11,7 +11,7 @@ export interface GlobalModelState {
   token?: string;
 }
 
-export interface GlobalModelType extends ModelType {
+interface GlobalModelType extends ModelType {
   namespace: 'global';
   state: GlobalModelState;
   reducers: {
@@ -45,7 +45,7 @@ export interface GlobalModelType extends ModelType {
   };
 }
 
-const Model: BaseModel<GlobalModelType> = {
+export const GlobalModel: BaseModel<GlobalModelType> = {
   namespace: 'global',
   state: {
     permissions: [],
@@ -118,5 +118,3 @@ const Model: BaseModel<GlobalModelType> = {
     },
   },
 };
-
-export default Model;

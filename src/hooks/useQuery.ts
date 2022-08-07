@@ -1,11 +1,14 @@
-import { useSearchParams } from 'umi';
+import queryString, { StringifyOptions } from 'query-string';
 
-export function useQuery() {
-  const [searchParams] = useSearchParams();
+type QueryType = Record<string, any>;
 
-  function getParam(key: string) {
-    return searchParams.get(key);
-  }
+export function useQuery(): [QueryType, (object: QueryType, options?: StringifyOptions) => string] {
+  // const [searchParams] = useSearchParams();
+  // function getParam(key: string) {
+  //   return searchParams.get(key);
+  // }
 
-  return getParam;
+  const query = queryString.parse(location.search);
+
+  return [query, queryString.stringify];
 }

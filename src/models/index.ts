@@ -1,24 +1,14 @@
-import type { GetRootModelType, GetRootState, Models } from '@/types';
+import { TodoModel } from '@/pages/todo/model';
+
+import { GlobalModel } from './global';
+import { ListModel } from './list';
 
 /**
- * 在这里注册所有的 ModelType
+ * 注册所有的 Model
+ * key 无意义，不重复就行
  */
-// type Models = [GlobalModelType, TodoModelType];
-
-/**
- * 所有的 ModelType
- * {
- *   [namespace]: ModelType;
- * }
- */
-type RootModelType = GetRootModelType<Models>;
-
-/**
- * RootState，在组件中使用 useSelector, connect 函数时使用
- * {
- *   [namespace]: ModelState;
- * }
- */
-type RootState = GetRootState<RootModelType>;
-
-export { RootModelType, RootState };
+export const models = {
+  1: GlobalModel,
+  2: TodoModel,
+  3: ListModel,
+};

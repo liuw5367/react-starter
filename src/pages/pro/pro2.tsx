@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 
 import Select from '@/components/Select';
 import TableComponent from '@/components/TableComponent';
+import { useDispatch, useSelector } from '@/hooks';
 import { ListItem, queryList } from '@/services/list';
 import type { Pagination } from '@/types';
 
@@ -14,9 +15,10 @@ interface FormValue {
 }
 
 export default function Page() {
+  const dispatch = useDispatch();
   const [pagination, setPagination] = useState<Pagination>({ current: 1, pageSize: 10, total: 0 });
   const [dataSource, setDataSource] = useState<ListItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const loading = useSelector((s) => s.loading.effects['list/queryList']);
 
   const [form] = Form.useForm();
 
@@ -32,13 +34,11 @@ export default function Page() {
   }, []);
 
   async function requestData(current = pagination.current, size = pagination.pageSize) {
-    setLoading(true);
-    const response = await queryList({ current, size });
+    const response = await dispatch({ type: 'list/queryList', payload: { current, size } });
     if (response.success) {
       const { list, current, total, size } = response.data;
       setDataSource(list);
       setPagination({ ...pagination, current, total, pageSize: size });
-      setLoading(false);
     }
   }
 

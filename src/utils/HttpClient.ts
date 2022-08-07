@@ -1,7 +1,6 @@
 import { notification } from 'antd';
 import type { AxiosInstance, AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse } from 'axios';
 import axios from 'axios';
-import { history } from 'umi';
 
 import type { ApiResponse } from '@/services';
 
@@ -22,7 +21,8 @@ export function getHeaders(): AxiosRequestHeaders {
 
 function redirect() {
   const { pathname, search } = window.location;
-  history.push('/login?redirect=' + pathname + (search ? `/${search}` : ''));
+  // history.push();
+  window.location.href = '/login?redirect=' + pathname + (search ? `/${search}` : '');
 }
 
 function processLogout(response: AxiosResponse) {

@@ -1,7 +1,7 @@
-import { history } from 'umi';
+import { history } from '@/App';
 
 /**
- * 考虑使用 useNavigate()
+ *  可使用 useNavigate()
  */
 export function useHistory() {
   return history;

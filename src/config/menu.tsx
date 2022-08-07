@@ -22,7 +22,6 @@ export const menuConfig: MenuItem[] = [
         key: 'Github',
         icon: 'LinkOutlined',
       },
-      { title: 'Umi', link: 'https://umijs.org', key: 'Umi', icon: 'LinkOutlined' },
     ],
   },
   {

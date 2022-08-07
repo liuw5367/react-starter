@@ -1,5 +1,3 @@
-import type { RootModelType, RootState } from '@/models/';
-
 import type {
   Action,
   AllModelActionTypes,
@@ -9,6 +7,8 @@ import type {
   ModelKeys,
   ModelReducerKeys,
   PutAction,
+  RootModelType,
+  RootState,
 } from '.';
 
 /**

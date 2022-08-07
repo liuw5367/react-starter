@@ -1,7 +1,7 @@
 import type React from 'react';
 import type { CSSProperties } from 'react';
 
-import styles from './FilterLayout.less';
+import styles from './FilterLayout.module.less';
 
 interface Props {
   style?: CSSProperties;

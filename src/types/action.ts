@@ -1,7 +1,6 @@
 import type { Union } from 'ts-toolbelt';
 
-import type { models } from '@/.umi/plugin-dva/models';
-import type { RootModelType } from '@/models';
+import { models } from '@/models';
 import type { ModelType } from '@/types/redux';
 
 import type { ValueOf } from '.';
@@ -28,7 +27,7 @@ type DvaModels = typeof models;
 export type Models = Union.ListOf<
   NonNullable<
     {
-      [K in keyof DvaModels]: DvaModels[K]['model'];
+      [K in keyof DvaModels]: DvaModels[K];
     }[keyof DvaModels]['modelType']
   >
 >;
@@ -56,6 +55,14 @@ export interface Loading {
     [K in AllNamespaces]: boolean;
   };
 }
+
+/**
+ * 所有的 ModelType
+ * {
+ *   [namespace]: ModelType;
+ * }
+ */
+export type RootModelType = GetRootModelType<Models>;
 
 type GetModelKeys<K extends keyof RootModelType> = ModelKeys<RootModelType[K]>;
 
@@ -95,3 +102,11 @@ export type PutAction<
   M = any,
   T extends AllModelActionTypes | ModelKeys<M> = AllModelActionTypes | ModelKeys<M>,
 > = BooleanAction<T, P>;
+
+/**
+ * RootState，在组件中使用 useSelector, connect 函数时使用
+ * {
+ *   [namespace]: ModelState;
+ * }
+ */
+export type RootState = GetRootState<RootModelType>;

@@ -1,54 +1,49 @@
-import { Random } from 'mockjs';
-import { defineMock } from 'umi';
+import { MockMethod, Recordable } from 'vite-plugin-mock';
 
-export default defineMock({
-  'POST /api/login': (req, res) => {
-    res.json({
+interface Request {
+  url: Recordable;
+  body: Recordable;
+  query: Recordable;
+  headers: Recordable;
+}
+
+type ResponseFunction = (request: Request) => unknown;
+
+/**
+ * 添加函数参数提示，但是不支持直接返回对象了，TS 会报错
+ */
+export interface Method extends MockMethod {
+  response?: ResponseFunction;
+}
+
+export default <MockMethod[]>[
+  {
+    url: '/api/login',
+    method: 'post',
+    response: {
       code: 0,
       message: 'ok',
       data: `token-${Date.now()}`,
-    });
+    },
   },
-  'POST /api/logout': (req, res) => {
-    res.json({
+  {
+    url: '/api/logout',
+    method: 'post',
+    response: {
       code: 0,
       message: 'ok',
-    });
+    },
   },
-  'GET /api/list': (req, res) => {
-    const { current = 1, size = 10 } = req.query;
-    const total = 12345;
-    const pageNum = Number(current);
-    const pageSize = Number(size);
-
-    res.json({
-      code: 0,
-      message: 'ok',
-      data: {
-        list: Array(Number(pageNum) * Number(pageSize) > total ? total % Number(pageSize) : Number(pageSize))
-          .fill(1)
-          .map(() => ({
-            id: Random.id(),
-            name: Random.cname(),
-            age: Random.integer(20, 50),
-            birth: Random.datetime('yyyy-MM-dd HH:mm:ss'),
-            email: Random.email(),
-          })),
-        total,
-        size: pageSize,
-        current: pageNum,
-      },
-    });
-  },
-  'GET /api/codeTest': (req, res) => {
-    // res.sendStatus(401);
-    res.json({
+  {
+    url: '/api/codeTest',
+    method: 'get',
+    response: {
       code: -1,
       message: 'ERROR',
-    });
-    // res.json({
+    },
+    // response: () => ({
     //   code: 401,
     //   message: 'ERROR',
-    // });
+    // }),
   },
-});
+];

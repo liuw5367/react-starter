@@ -1,10 +1,3 @@
-/.mfsu
-/.umi
-/.umi-production
-/.umi-test
-/.umirc.local.ts
-/src/.umi
-/src/.umi-production
 /config/config.local.ts
 
 /.env.local
@@ -17,3 +10,4 @@
 .idea
 
 yarn-error.log
+.pnpm-debug.log

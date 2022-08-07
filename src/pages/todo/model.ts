@@ -21,7 +21,7 @@ interface ModelReducers {
 
 export type TodoModelType = ModelType<'todo', TodoModelState, ModelEffects, ModelReducers>;
 
-const Model: BaseModel<TodoModelType> = {
+export const TodoModel: BaseModel<TodoModelType> = {
   namespace: 'todo',
   state: { data: [] },
   reducers: {
@@ -40,5 +40,3 @@ const Model: BaseModel<TodoModelType> = {
     },
   },
 };
-
-export default Model;

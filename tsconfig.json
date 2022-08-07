@@ -1,22 +1,27 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "jsx": "react-jsx",
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
-    "sourceMap": true,
-    "baseUrl": "./",
-    "strict": true,
-    "resolveJsonModule": true,
+    "importHelpers": true,
     "allowSyntheticDefaultImports": true,
-    "importsNotUsedAsValues": "error",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"],
-      "@@/*": ["src/.umi/*"],
-      "umi": ["node_modules/umi"],
-      "umi/typings": ["src/.umi/typings"]
-    }
-  }
+      "@/*": ["src/*"]
+    },
+    "types": ["vite", "vite/client", "vite-plugin-svgr/client", "jest", "node"]
+  },
+  "include": ["src/**/*"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

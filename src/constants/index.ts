@@ -11,3 +11,9 @@ export const FORMAT_TIME_HMS = 'HH:mm:ss';
 export const FORMAT_TIME_HM = 'HH:mm';
 
 export const CACHE_TOKEN = 'token';
+
+export const Theme = {
+  COLOR: {
+    primary: '#649AFF',
+  },
+};

@@ -1,4 +1,12 @@
-import type { Route } from '@ant-design/pro-layout/lib/typings';
+import type { Route as ProRoute } from '@ant-design/pro-layout/lib/typings';
+import { Route, Routes } from 'react-router-dom';
+
+import Layout from '@/layouts';
+import NotFound404 from '@/pages/404';
+import Home from '@/pages/index';
+import Login from '@/pages/login';
+import Pro1 from '@/pages/pro/pro1';
+import Pro2 from '@/pages/pro/pro2';
 
 export interface RouteItem {
   /** 面包屑使用 */
@@ -16,7 +24,7 @@ const NotFoundRoute: RouteItem = { path: '*', title: '404', component: '@/pages/
 /**
  * umi4 里所有路由默认都走 @/layout ?
  */
-export const routes: RouteItem[] = [
+export const umiRoutes: RouteItem[] = [
   { exact: true, path: '/', title: 'Home', component: '@/pages/index' },
   { exact: true, path: '/login', component: '@/pages/login' },
   { exact: true, path: '/todo', title: 'Todo', component: '@/pages/todo' },
@@ -39,7 +47,7 @@ export const routes: RouteItem[] = [
 /**
  * ProLayout 菜单配置，自动生成面包屑
  */
-export const proRoutes: Route = {
+export const proRoutes: ProRoute = {
   path: '/',
   routes: [
     {
@@ -60,19 +68,29 @@ export const proRoutes: Route = {
     {
       target: '/link',
       name: 'Link1',
-      routes: [
-        { path: 'https://umijs.org', target: 'a', name: 'Umi' },
-        { path: 'https://github.com/liuw5367/react-template', target: 'a', name: 'Github' },
-      ],
-    },
-    {
-      target: '/link',
-      name: 'Link2',
-      flatMenu: true,
-      routes: [
-        { path: 'https://umijs.org', target: 'a', name: 'Umi' },
-        { path: 'https://github.com/liuw5367/react-template', target: 'a', name: 'Github' },
-      ],
+      routes: [{ path: 'https://github.com/liuw5367/react-template', target: 'a', name: 'Github' }],
     },
   ],
 };
+
+export const routes = (
+  <Routes>
+    <Route path="/" element={<Layout />}>
+      <Route index element={<Home />} />
+      <Route path="pro">
+        <Route path="1" element={<Pro1 />} />
+        <Route path="2" element={<Pro2 />} />
+      </Route>
+      {/* <Route path="list" element={<List />} />
+      <Route path="setting">
+        <Route path="role" element={<SettingRole />} />
+        <Route path="user" element={<SettingUser />} />
+        <Route path="*" element={<NotFound404 />} />
+      </Route> */}
+      <Route path="*" element={<NotFound404 />} />
+    </Route>
+    {/* <Route element={<BaseLayout />}> */}
+    <Route path="login" element={<Login />} />
+    {/* </Route> */}
+  </Routes>
+);

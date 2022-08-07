@@ -1,5 +1,5 @@
 import { Layout, Menu } from 'antd';
-import { useLocation } from 'umi';
+import { useLocation } from 'react-router-dom';
 
 import { APP_NAME } from '@/constants';
 

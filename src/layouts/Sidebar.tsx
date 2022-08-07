@@ -1,6 +1,6 @@
 import { HomeOutlined, LinkOutlined, NotificationOutlined } from '@ant-design/icons';
 import { Layout, Menu, MenuProps } from 'antd';
-import { Link, useLocation } from 'umi';
+import { Link, useLocation } from 'react-router-dom';
 
 import { menuConfig } from '@/config';
 import type { MenuItem } from '@/types';

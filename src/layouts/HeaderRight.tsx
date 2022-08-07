@@ -2,13 +2,12 @@ import { CrownOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icon
 import { Avatar, Dropdown, Form, Menu, message, Modal, Space } from 'antd';
 import { useState } from 'react';
 
-import { useDispatch } from '@/hooks';
-import { modifyPassword } from '@/services/user';
+import { logout, modifyPassword } from '@/services/user';
+import { clearCacheOnLogout } from '@/utils';
 
 import PasswordSettingForm from './PasswordSettingForm';
 
 export default function HeaderRight() {
-  const dispatch = useDispatch();
   const [logoutVisible, setLogoutVisible] = useState(false);
   const [form] = Form.useForm();
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -22,9 +21,11 @@ export default function HeaderRight() {
     }
   }
 
-  function handleLogoutOk() {
+  async function handleLogoutOk() {
     setLogoutVisible(false);
-    dispatch({ type: 'global/logout' });
+    await logout();
+    clearCacheOnLogout();
+    window.location.href = '/';
   }
 
   function handlePasswordCancel() {

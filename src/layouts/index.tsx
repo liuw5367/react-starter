@@ -1,5 +1,5 @@
 import { Layout, message } from 'antd';
-import { Navigate, Outlet, useLocation } from 'umi';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 import { useQuery } from '@/hooks';
 import { isLogin } from '@/utils';
@@ -11,7 +11,7 @@ import SiderBar from './Sidebar';
 
 export default function Index() {
   const location = useLocation();
-  const query = useQuery();
+  const [query] = useQuery();
   let { pathname } = location;
   if (pathname.endsWith('/')) {
     pathname = pathname.substring(0, pathname.length - 1);
@@ -20,7 +20,7 @@ export default function Index() {
   if (pathname === '/login') {
     if (isLogin()) {
       message.success('已登陆');
-      return <Navigate to={query('redirect') || ''} />;
+      return <Navigate to={query.redirect || ''} />;
     } else {
       return <Outlet />;
     }

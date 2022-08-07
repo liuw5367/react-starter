@@ -1,6 +1,3 @@
 node_modules
-.umi
-.umi-test
-.umi-production
 .DS_Store
 /dist

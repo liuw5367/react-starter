@@ -1,11 +1,14 @@
-import { Config, configUmiAlias, createConfig } from 'umi/test';
-
-export default async () => {
-  return (await configUmiAlias({
-    ...createConfig({
-      target: 'browser',
-    }),
-    // if you require some es-module npm package, please uncomment below line and insert your package name
-    // transformIgnorePatterns: ['node_modules/(?!.*(lodash-es|your-es-pkg-name)/)']
-  })) as Config.InitialOptions;
+module.exports = {
+  preset: 'ts-jest',
+  roots: ['<rootDir>'],
+  moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
+  testPathIgnorePatterns: ['<rootDir>[/\\\\](build|docs|node_modules)[/\\\\]'],
+  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
+  testEnvironment: 'jsdom',
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': 'ts-jest',
+  },
+  moduleNameMapper: {
+    '^.+\\.(css|less)$': '<rootDir>/config/CSSStub.js',
+  },
 };

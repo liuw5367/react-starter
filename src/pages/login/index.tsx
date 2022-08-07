@@ -1,12 +1,12 @@
 import { Button, Checkbox, Form, Input, message } from 'antd';
 import { useState } from 'react';
-import { history } from 'umi';
+import { useNavigate } from 'react-router-dom';
 
 import { APP_NAME, CACHE_TOKEN, RULE_PASSWORD, RULE_PASSWORD_LENGTH, RULE_USERNAME } from '@/constants';
 import { useQuery } from '@/hooks';
 import { login } from '@/services/user';
 
-import styles from './index.less';
+import styles from './index.module.less';
 
 interface FormValue {
   username: string;
@@ -15,7 +15,8 @@ interface FormValue {
 }
 
 const Login = () => {
-  const query = useQuery();
+  const navigate = useNavigate();
+  const [query] = useQuery();
   const [isError, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
@@ -40,7 +41,7 @@ const Login = () => {
       return;
     }
     localStorage.setItem(CACHE_TOKEN, token);
-    history.replace(query('redirect') || '/');
+    navigate(query.redirect || '/');
   }
 
   function handleFinish(values: FormValue) {

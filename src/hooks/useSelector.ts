@@ -1,4 +1,4 @@
-import { useSelector as useSelectorFn } from 'umi';
+import { useSelector as useSelectorFn } from 'react-redux';
 
 import type { UseSelectorFunction } from '@/types';
 

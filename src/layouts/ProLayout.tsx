@@ -3,7 +3,7 @@ import { ProLayout } from '@ant-design/pro-layout';
 import type { Route } from '@ant-design/pro-layout/lib/typings';
 import { Avatar } from 'antd';
 import type React from 'react';
-import { useLocation, useNavigate } from 'umi';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { proRoutes } from '@/config';
 import { APP_NAME } from '@/constants';

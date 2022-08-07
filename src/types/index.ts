@@ -1,6 +1,5 @@
 export * from './action';
 export * from './redux';
-
 export interface MenuItem {
   key: string;
   title: string;
@@ -20,8 +19,8 @@ export interface LabelValueItem<T = any> {
   label: string;
   value: T;
 
-  children?: LabelValueItem<T>[];
   disabled?: boolean;
+  children?: LabelValueItem<T>[];
   [key: string]: any;
 }
 
