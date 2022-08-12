@@ -6,6 +6,8 @@ React 后台管理项目模板。
 
 使用 Vite 3
 
+[Umi4 分支](https://github.com/liuw5367/react-template/tree/umi)
+
 ## dependencies
 
 - React 18

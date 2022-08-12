@@ -1,3 +1,4 @@
+import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import Unocss from 'unocss/vite';
@@ -30,6 +31,12 @@ export default ({ command }: ConfigEnv): UserConfigExport => ({
   },
   plugins: [
     react(),
+    legacy({
+      targets: [
+        'defaults',
+        // 'not IE 11'
+      ],
+    }),
     Unocss({ include: 'src/**/*' }),
     // ...svgr options (https://react-svgr.com/docs/options/)
     svgrPlugin({ svgrOptions: { icon: true } }),
