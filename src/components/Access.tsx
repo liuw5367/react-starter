@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 
 import { useAccess } from '@/hooks';
 
@@ -10,7 +10,17 @@ interface Props {
   /** 无权限时显示 */
   fallback?: React.ReactNode;
   /** 子元素 */
-  children?: React.ReactNode;
+  children?: any;
+}
+
+/** 判断用户权限 */
+function Permission(props: Props) {
+  const { permission, fallback = null, children = null } = props;
+  const access = useAccess();
+
+  if (permission && access.hasPermission(permission)) return children;
+
+  return fallback;
 }
 
 /**
@@ -18,14 +28,13 @@ interface Props {
  */
 export default function Access(props: Props) {
   const { accessible, permission, fallback = null, children = null } = props;
-  const access = useAccess();
 
   /* 根据传入的值 直接控制是否显示 */
-  if (accessible) return children;
+  if (accessible === true) return children;
   if (accessible === false) return fallback;
 
-  /* 判断是否有权限 */
-  if (permission && access.hasPermission(permission)) return children;
+  /** 判断用户权限  */
+  if (permission) return <Permission {...props} />;
 
   /* 无权限限制 */
   if (!accessible && !permission) return children;

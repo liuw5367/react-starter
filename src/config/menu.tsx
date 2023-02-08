@@ -3,6 +3,7 @@ import type { MenuItem } from '@/types';
 export const menuConfig: MenuItem[] = [
   { title: 'Home', link: '/', key: '/', icon: 'HomeOutlined' },
   { title: 'Todo', link: '/todo', key: '/todo', icon: 'OrderedListOutlined' },
+  { title: 'Examples', link: '/examples', key: '/examples', icon: 'OrderedListOutlined' },
   {
     title: 'Setting',
     link: '/setting',

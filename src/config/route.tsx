@@ -1,19 +1,23 @@
 import type { Route as ProRoute } from '@ant-design/pro-layout/lib/typings';
+import React from 'react';
 import { Route, RouteObject, Routes } from 'react-router-dom';
 
-import Layout from '@/layouts';
-import NotFound from '@/pages/404';
-import Home from '@/pages/index';
-import Login from '@/pages/login';
-import Pro1 from '@/pages/pro/pro1';
-import Pro2 from '@/pages/pro/pro2';
-import SettingUser from '@/pages/setting/user';
-import Todo from '@/pages/todo';
-
-export interface RouteItem extends RouteObject {
+export type RouteItem = RouteObject & {
   /** 面包屑使用 */
-  title?: string;
+  name?: string;
   children?: RouteItem[];
+};
+
+/**
+ * 将路径转化为组件
+ */
+function get(fn: () => Promise<any>) {
+  const Component = React.lazy(fn);
+  return (
+    <React.Suspense fallback={null}>
+      <Component />
+    </React.Suspense>
+  );
 }
 
 /**
@@ -28,6 +32,7 @@ export const proRoutes: ProRoute = {
       // icon: <CrownOutlined />,
     },
     { path: '/todo', name: 'Todo' },
+    { path: '/examples', name: 'Examples' },
     { path: '/login', name: 'Login' },
     {
       path: '/pro',
@@ -45,56 +50,50 @@ export const proRoutes: ProRoute = {
   ],
 };
 
-export const routes1 = (
+const NotFoundRoute: RouteItem = { path: '*', element: get(() => import('../pages/404')) };
+
+const routes1 = (
   <Routes>
-    <Route path="/" element={<Layout />}>
-      <Route index element={<Home />} />
+    <Route path="/" element={get(() => import('../layouts/index'))}>
+      <Route index element={get(() => import('../pages/index'))} />
       <Route path="pro">
-        <Route path="1" element={<Pro1 />} />
-        <Route path="2" element={<Pro2 />} />
+        <Route path="1" element={get(() => import('../pages/pro/pro1'))} />
+        <Route path="2" element={get(() => import('../pages/pro/pro2'))} />
       </Route>
-      {/* <Route path="list" element={<List />} />
-      <Route path="setting">
-        <Route path="role" element={<SettingRole />} />
-        <Route path="user" element={<SettingUser />} />
-        <Route path="*" element={<NotFound404 />} />
-      </Route> */}
-      <Route path="*" element={<NotFound />} />
+      <Route path="*" element={get(() => import('../pages/404'))} />
     </Route>
-    {/* <Route element={<BaseLayout />}> */}
-    <Route path="login" element={<Login />} />
-    {/* </Route> */}
+    <Route path="login" element={get(() => import('../pages/login/index'))} />
   </Routes>
 );
 
 export const routes: RouteItem[] = [
-  { path: '/login', element: <Login /> },
+  { path: '/login', element: get(() => import('../pages/login/index')) },
   {
     path: '/',
-    element: <Layout />,
+    element: get(() => import('../layouts/index')),
     children: [
-      { index: true, element: <Home /> },
-      { path: '/todo', element: <Todo /> },
+      { index: true, element: get(() => import('../pages/index')) },
+      { path: '/todo', element: get(() => import('../pages/todo/index')) },
       {
         path: 'pro',
         children: [
-          { path: '/pro/1', element: <Pro1 /> },
-          { path: '/pro/2', element: <Pro2 /> },
+          { path: '/pro/1', element: get(() => import('../pages/pro/pro1')) },
+          { path: '/pro/2', element: get(() => import('../pages/pro/pro2')) },
 
-          { path: '*', element: <NotFound /> },
+          NotFoundRoute,
         ],
       },
       {
         path: 'setting',
-        title: 'setting',
+        name: 'setting',
         children: [
-          { path: '/setting/user', title: 'user', element: <SettingUser /> },
+          { path: '/setting/user', name: 'user', element: get(() => import('../pages/setting/user')) } as RouteItem,
 
-          { path: '*', element: <NotFound /> },
+          NotFoundRoute,
         ],
       },
 
-      { path: '*', element: <NotFound /> },
+      NotFoundRoute,
     ],
   },
 ];

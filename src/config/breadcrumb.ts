@@ -10,7 +10,7 @@ import { RouteItem, routes } from './route';
 function traversal(routeList: RouteItem[] = [], list: string[][], data: LabelValueItem[]) {
   routeList.forEach((route) => {
     if (route.children && routes.length > 0) {
-      const { path, title } = route;
+      const { path, name: title } = route;
       // 查找是否有当前路由的页面
       const routePage = route.children?.find((v) => v.path === path);
       if (title) {
@@ -24,7 +24,7 @@ function traversal(routeList: RouteItem[] = [], list: string[][], data: LabelVal
         list.splice(list.length - 1, 1);
       }
     } else {
-      const { path, title } = route;
+      const { path, name: title } = route;
       const item = [title, path];
       const breadcrumbList = title ? [...list, item] : [...list];
       data.push({ label: path || '', value: breadcrumbList });

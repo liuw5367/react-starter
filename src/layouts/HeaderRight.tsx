@@ -88,7 +88,7 @@ export default function HeaderRight() {
         />
       </Dropdown>
       <Modal
-        visible={passwordVisible}
+        open={passwordVisible}
         title={'设置密码'}
         onCancel={handlePasswordCancel}
         onOk={handlePasswordOk}
@@ -97,7 +97,7 @@ export default function HeaderRight() {
         <PasswordSettingForm form={form} />
       </Modal>
       <Modal
-        visible={logoutVisible}
+        open={logoutVisible}
         title={'退出登录'}
         onCancel={() => setLogoutVisible(false)}
         onOk={handleLogoutOk}

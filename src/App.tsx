@@ -8,10 +8,12 @@ import { ConfigProvider, message, notification } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
 import { GlobalScrollbar } from 'mac-scrollbar';
 import moment from 'moment';
+import { Helmet } from 'react-helmet';
 import { useRoutes } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 
 import { routes } from './config';
+import { APP_NAME } from './constants';
 import { DvaRoot } from './dva';
 import { createHistory } from './history';
 
@@ -26,6 +28,9 @@ export default function App() {
 
   return (
     <ConfigProvider locale={zhCN}>
+      <Helmet>
+        <title>{APP_NAME}</title>
+      </Helmet>
       {/* macos style scroll bar */}
       <GlobalScrollbar />
       <RecoilRoot>

@@ -11,7 +11,7 @@ import SiderBar from './Sidebar';
 
 export default function Index() {
   const location = useLocation();
-  const [query] = useQuery();
+  const { query } = useQuery();
   let { pathname } = location;
   if (pathname.endsWith('/')) {
     pathname = pathname.substring(0, pathname.length - 1);

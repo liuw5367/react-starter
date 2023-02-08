@@ -16,7 +16,7 @@ interface FormValue {
 
 const Login = () => {
   const navigate = useNavigate();
-  const [query] = useQuery();
+  const { query } = useQuery();
   const [isError, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();

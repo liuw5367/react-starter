@@ -1,0 +1,13 @@
+{
+  "less.lint.unknownAtRules": "ignore",
+  "eslint.enable": true,
+  "stylelint.enable": true,
+  "prettier.enable": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "prettier.requireConfig": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.exclude": {}
+}

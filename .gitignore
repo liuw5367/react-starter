@@ -1,13 +1,12 @@
-/config/config.local.ts
-
-/.env.local
+.DS_Store
 /node_modules
 /dist
 /*.zip
-.DS_Store
+*.local
+*.log
 
-.vscode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
 .idea
-
-yarn-error.log
-.pnpm-debug.log

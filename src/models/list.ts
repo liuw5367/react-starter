@@ -11,7 +11,7 @@ export const ListModel: BaseModel<ListModelType> = {
   state: {},
   effects: {
     *queryList({ payload }) {
-      return yield generator(() => queryList(payload));
+      return yield* generator(() => queryList(payload));
     },
   },
   reducers: {

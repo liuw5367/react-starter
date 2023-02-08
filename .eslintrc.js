@@ -45,25 +45,24 @@ module.exports = {
     ],
     'no-unused-vars': ['off', { argsIgnorePattern: '^_' }], // 忽略 _ 开头的变量
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': ['warn', { additionalHooks: 'useRecoilCallback' }],
-    eqeqeq: ['error', 'allow-null'],
+    'react-hooks/exhaustive-deps': [
+      'warn',
+      {
+        additionalHooks: 'useRecoilCallback',
+      },
+    ],
+    eqeqeq: ['warn', 'allow-null'],
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/ban-types': 'warn',
+    '@typescript-eslint/no-empty-interface': 'off',
     'require-yield': 'warn',
-    'spaced-comment': 'error',
-    // 不允许多个空行
+    'spaced-comment': ['error', 'always', { markers: ['/'] }],
     'no-multiple-empty-lines': ['error', { max: 2, maxEOF: 1 }],
     'lines-between-class-members': ['error', 'always'],
     // 禁用行尾空白
     'no-trailing-spaces': 'error',
-    // 解构优先
-    'prefer-destructuring': [
-      'off',
-      {
-        VariableDeclarator: { array: true, object: true },
-        AssignmentExpression: { array: false, object: false },
-      },
-    ],
+    // ignore 不支持正则表达式，unocss attributify 无法识别，所以禁用
+    'react/no-unknown-property': ['off', { ignore: ['/^un-/'] }],
   },
 };
