@@ -57,13 +57,14 @@ export function convertToMenuItems(
     });
 }
 
-export default function SiderBar() {
+export default function SiderBar(props: { width?: number }) {
+  const { width = 200 } = props;
   const { pathname } = useLocation();
   const [menus] = useAtom(menusAtom);
   const menuItems = convertToMenuItems(menus, getMenuIcon);
 
   return (
-    <Layout.Sider width={200} className="h-full">
+    <Layout.Sider width={width} className="h-full">
       <Menu
         mode="inline"
         selectedKeys={[pathname]}

@@ -57,13 +57,13 @@ export default function Page() {
           <Input className="w-60" />
         </Filter>
         <Filter label="Name:">
-          <Select />
+          <Select style={{ width: 180 }} />
         </Filter>
         <Filter label="Name:">
           <Input className="w-60" />
         </Filter>
         <Filter label="Name:">
-          <Select />
+          <Select style={{ width: 180 }} />
         </Filter>
       </FilterLayout>
       <TableComponent
