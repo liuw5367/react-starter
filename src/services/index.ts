@@ -1,5 +1,4 @@
 export interface ApiResponse<T = any> {
-  /** 是否成功，boolean 类型 方便页面判断 */
   success: boolean;
 
   code: number | string;
