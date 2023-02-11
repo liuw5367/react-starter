@@ -43,6 +43,6 @@ Dva 基于 redux、saga，但是因为 saga 使用 generator 导致 ts 推断不
 
 下面是重新定义的 TS 类型：
 
-- [Dispatch](./src/hooks/useDispatch.ts)
-- [Selector](./src/hooks/useSelector.ts)
-- [ModelType](./src/types/redux.ts)
+- [Dispatch](https://github.com/liuw5367/examples/tree/main/frontend/dva-ts-vite/src/hooks/useDispatch.ts)
+- [Selector](https://github.com/liuw5367/examples/tree/main/frontend/dva-ts-vite/src/hooks/useSelector.ts)
+- [ModelType](https://github.com/liuw5367/examples/tree/main/frontend/dva-ts-vite/src/dva/redux.ts)
