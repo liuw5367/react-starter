@@ -1,6 +1,6 @@
 import { Random } from 'mockjs';
 
-import { Method } from '.';
+import type { Method } from '.';
 
 export default <Method[]>[
   {

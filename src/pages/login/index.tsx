@@ -50,7 +50,8 @@ const Login = () => {
       localStorage.setItem('login-remember', '1');
       localStorage.setItem('login-username', username);
       localStorage.setItem('login-password', password);
-    } else {
+    }
+    else {
       localStorage.setItem('login-remember', '');
       localStorage.setItem('login-username', '');
       localStorage.setItem('login-password', '');

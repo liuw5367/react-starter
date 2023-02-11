@@ -7,7 +7,7 @@ import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { presetAttributify, presetIcons, presetUno } from 'unocss';
 import Unocss from 'unocss/vite';
-import { ConfigEnv, UserConfigExport } from 'vite';
+import type { ConfigEnv, UserConfigExport } from 'vite';
 import { viteMockServe } from 'vite-plugin-mock';
 import svgrPlugin from 'vite-plugin-svgr';
 

@@ -1,11 +1,11 @@
-import { Button, Input } from 'antd';
+import { Button, Input, Select } from 'antd';
 import type { ColumnsType } from 'antd/lib/table';
 import { useEffect, useState } from 'react';
 
 import FilterLayout, { Filter } from '@/components/FilterLayout';
-import Select from '@/components/Select';
 import TableComponent from '@/components/TableComponent';
-import { ListItem, queryList } from '@/services/list';
+import type { ListItem } from '@/services/list';
+import { queryList } from '@/services/list';
 import type { Pagination } from '@/types';
 
 export default function Page() {

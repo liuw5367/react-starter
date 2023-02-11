@@ -1,10 +1,10 @@
 import { Breadcrumb, Layout } from 'antd';
 import { isEmpty } from 'lodash';
-import type React from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import { generateBreadcrumbPathMap } from '@/config/breadcrumb';
-import { LabelValueItem } from '@/types';
+import type { LabelValueItem } from '@/types';
 
 interface Props {
   children: React.ReactNode;

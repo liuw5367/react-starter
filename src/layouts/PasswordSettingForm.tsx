@@ -1,4 +1,5 @@
-import { Form, FormInstance, Input } from 'antd';
+import type { FormInstance } from 'antd';
+import { Form, Input } from 'antd';
 
 import { RULE_PASSWORD, RULE_PASSWORD_LENGTH } from '@/constants';
 

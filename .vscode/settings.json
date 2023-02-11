@@ -3,7 +3,7 @@
   "eslint.enable": true,
   "stylelint.enable": true,
   "prettier.enable": true,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },

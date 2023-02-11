@@ -67,7 +67,10 @@ export function usePageModified(onBackOrRefresh?: () => void) {
     };
     beforeUnloadListener.current = (e: BeforeUnloadEvent) => {
       const hint = '您修改的数据未保存，是否放弃修改?';
-      if (e) e.returnValue = hint;
+      if (e) {
+        e.returnValue = hint;
+      }
+
       return hint;
     };
     return () => {
@@ -84,7 +87,8 @@ export function usePageModified(onBackOrRefresh?: () => void) {
       window.addEventListener('beforeunload', beforeUnloadListener.current, true);
       addPushState();
       window.addEventListener('popstate', popListener.current, true);
-    } else {
+    }
+    else {
       window.removeEventListener('beforeunload', beforeUnloadListener.current, true);
       removePushState();
       window.removeEventListener('popstate', popListener.current, true);

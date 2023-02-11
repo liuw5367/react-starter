@@ -10,14 +10,9 @@ import { GlobalScrollbar } from 'mac-scrollbar';
 import moment from 'moment';
 import { Helmet } from 'react-helmet';
 import { useRoutes } from 'react-router-dom';
-import { RecoilRoot } from 'recoil';
 
 import { routes } from './config';
 import { APP_NAME } from './constants';
-import { DvaRoot } from './dva';
-import { createHistory } from './history';
-
-export const history = createHistory();
 
 moment.locale('zh-cn');
 notification.config({ duration: 2 });
@@ -33,9 +28,7 @@ export default function App() {
       </Helmet>
       {/* macos style scroll bar */}
       <GlobalScrollbar />
-      <RecoilRoot>
-        <DvaRoot>{route}</DvaRoot>
-      </RecoilRoot>
+      {route}
     </ConfigProvider>
   );
 }

@@ -1,5 +1,5 @@
 import { CrownOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icons';
-import { Avatar, Dropdown, Form, Menu, message, Modal, Space } from 'antd';
+import { Avatar, Dropdown, Form, message, Modal, Space } from 'antd';
 import { useState } from 'react';
 
 import { logout, modifyPassword } from '@/services/user';
@@ -12,11 +12,11 @@ export default function HeaderRight() {
   const [form] = Form.useForm();
   const [passwordVisible, setPasswordVisible] = useState(false);
 
-  function handleMenuClick(event: { key: string }) {
-    const { key } = event;
+  function handleMenuClick(key: string) {
     if (key === 'logout') {
       setLogoutVisible(true);
-    } else if (key === 'password') {
+    }
+    else if (key === 'password') {
       setPasswordVisible(true);
     }
   }
@@ -50,36 +50,34 @@ export default function HeaderRight() {
     });
   }
 
-  const menu = (
-    <Menu
-      onClick={handleMenuClick}
-      items={[
-        {
-          key: 'password',
-          label: (
-            <Space>
-              <SettingOutlined />
-              设置密码
-            </Space>
-          ),
-        },
-        { type: 'divider' },
-        {
-          key: 'logout',
-          label: (
-            <Space>
-              <LogoutOutlined />
-              退出登录
-            </Space>
-          ),
-        },
-      ]}
-    />
-  );
-
   return (
     <div>
-      <Dropdown placement="bottomRight" overlay={menu}>
+      <Dropdown
+        placement="bottomRight"
+        menu={{
+          items: [
+            {
+              key: 'password',
+              label: (
+                <Space onClick={() => handleMenuClick('password')}>
+                  <SettingOutlined />
+                  设置密码
+                </Space>
+              ),
+            },
+            { type: 'divider' },
+            {
+              key: 'logout',
+              label: (
+                <Space onClick={() => handleMenuClick('logout')}>
+                  <LogoutOutlined />
+                  退出登录
+                </Space>
+              ),
+            },
+          ],
+        }}
+      >
         <Avatar
           shape="circle"
           size="small"

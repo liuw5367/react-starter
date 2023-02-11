@@ -11,14 +11,14 @@ export interface ListItem {
 }
 
 export async function queryList(params: ListRequest) {
-  return request<PageBody<ListItem>>(`/list`, {
+  return request<PageBody<ListItem>>('/list', {
     method: 'GET',
     params,
   });
 }
 
 export async function test() {
-  return request(`/codeTest`, {
+  return request('/codeTest', {
     method: 'GET',
   });
 }

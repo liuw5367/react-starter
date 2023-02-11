@@ -1,16 +1,15 @@
 import { notification } from 'antd';
-import { AxiosHeaders, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import axios from 'axios';
-import { type } from 'os';
 
-import { ApiResponse } from '@/services';
+import type { ApiResponse } from '@/services';
 
 import { clearCacheOnLogout } from './';
 
 /** 重新定义了 ApiResponseType，在当前文件使用，方便替换 ApiResponse */
 type ApiResponseType<T = any> = ApiResponse<T>;
 
-export const REQUEST_SUCCESS = '000000';
+export const REQUEST_SUCCESS = 0;
 
 const baseConfig: AxiosRequestConfig = {
   baseURL: '/api',
@@ -30,7 +29,7 @@ export function getHeaders(): Record<string, any> {
 
 function redirect() {
   const { pathname, search } = window.location;
-  window.location.href = '/login?redirect=' + pathname + (search ? `/${search}` : '');
+  window.location.href = `/login?redirect=${pathname}${search ? `/${search}` : ''}`;
 }
 
 function processLogout(response: AxiosResponse) {
@@ -50,7 +49,9 @@ function checkNotSkip(path: string, code: any) {
 }
 
 function processResponseData(request: XMLHttpRequest, data: ApiResponseType) {
-  if (!data) return;
+  if (!data) {
+    return;
+  }
   // 是否成功，boolean 类型 方便页面判断
   const url = request.responseURL || '';
   const domainAndPath = url.split('://')[1] || '';
@@ -68,7 +69,8 @@ function processResponseData(request: XMLHttpRequest, data: ApiResponseType) {
   if (data.code === 401 || data.code === '401' || data.message?.includes('token无效')) {
     clearCacheOnLogout();
     redirect();
-  } else if (!data.success && checkNotSkip(path, data.code)) {
+  }
+  else if (!data.success && checkNotSkip(path, data.code)) {
     notification.close(request.responseURL || '/api');
     notification.warning({
       key: request.responseURL || '/api',
@@ -104,13 +106,16 @@ function addResponseInterceptors(instance: AxiosInstance) {
             if (typeof data === 'string' && data.startsWith('{') && data.endsWith('}')) {
               data = JSON.parse(data);
             }
-          } catch (e) {
+          }
+          catch (e) {
             console.error(e);
           }
-        } else if (!contentType.includes('application/json')) {
+        }
+        else if (!contentType.includes('application/json')) {
           return res;
         }
       }
+
       processResponseData(request, data);
       return data;
     },
@@ -213,7 +218,7 @@ export function request<R = any>(
 export async function uploadData(url: string, data: Record<string, string | Blob | boolean | number> = {}) {
   const formData = new FormData();
   Object.entries(data).forEach(([key, value]) => {
-    // @ts-ignore type: boolean | number
+    // @ts-expect-error type: boolean | number
     formData.append(key, value);
   });
   return request(url, {
@@ -238,9 +243,13 @@ export function downloadFile(url: string, config: AxiosRequestConfig = { method:
   config.responseType = 'blob';
   return httpClient.instance.request(config).then((res) => {
     const { status, data, headers } = res;
-    if (status >= 400) return;
+    if (status >= 400) {
+      return;
+    }
     const disposition = headers?.['content-disposition'] || headers?.['Content-Disposition'];
-    if (!disposition) return;
+    if (!disposition) {
+      return;
+    }
     const fileName = disposition.replace(/\w+;filename=(.*)/, '$1');
     // 此处当返回json文件时需要先对data进行JSON.stringify处理，其他类型文件不用做处理
     // const blob = new Blob([JSON.stringify(data)], ...)

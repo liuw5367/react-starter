@@ -2,7 +2,6 @@ import type { MenuItem } from '@/types';
 
 export const menuConfig: MenuItem[] = [
   { title: 'Home', link: '/', key: '/', icon: 'HomeOutlined' },
-  { title: 'Todo', link: '/todo', key: '/todo', icon: 'OrderedListOutlined' },
   { title: 'Examples', link: '/examples', key: '/examples', icon: 'OrderedListOutlined' },
   {
     title: 'Setting',
@@ -23,16 +22,6 @@ export const menuConfig: MenuItem[] = [
         key: 'Github',
         icon: 'LinkOutlined',
       },
-    ],
-  },
-  {
-    title: 'ProLayout',
-    link: '/pro',
-    key: 'ProLayout',
-    icon: 'NotificationOutlined',
-    children: [
-      { title: 'Pro1', link: '/pro/1', key: '/pro/1' },
-      { title: 'Pro2', link: '/pro/2', key: '/pro/2' },
     ],
   },
 ];

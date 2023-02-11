@@ -1,5 +1,3 @@
-export * from './action';
-export * from './redux';
 export interface MenuItem {
   key: string;
   title: string;
@@ -36,8 +34,8 @@ export type PromiseType<T> = T extends Promise<infer R> ? R : T;
 export type FuncReturnType<S extends Function> = S extends (...args: any[]) => Promise<infer R>
   ? R
   : S extends (...args: any[]) => infer R
-  ? R
-  : never;
+    ? R
+    : never;
 
 export type Nullable<T> = {
   [P in keyof T]: T[P] | null;

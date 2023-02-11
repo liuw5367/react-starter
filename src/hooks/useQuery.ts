@@ -1,10 +1,11 @@
-import qs, { StringifyOptions } from 'query-string';
+import type { StringifyOptions } from 'query-string';
+import qs from 'query-string';
 
 type QueryType = Record<string, any>;
-type QueryFnReturn = {
+interface QueryFnReturn {
   query: QueryType;
   queryStringify: (object: QueryType, options?: StringifyOptions) => string;
-};
+}
 
 export function useQuery(): QueryFnReturn {
   // const [searchParams] = useSearchParams();

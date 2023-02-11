@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-import styles from './index.module.less';
-
 export default function Examples() {
   const [expand, setExpand] = useState(false);
 
@@ -18,9 +16,9 @@ export default function Examples() {
       >
         Button
       </button>
-      <div className={styles.wrapper}>
+      <div>
         <div className="w-12 h-12" />
-        <button className={styles.color}>button</button>
+        <button>button</button>
       </div>
 
       <div className="bg-green-300 w-20 h-20 hover:w-40 transition-all duration-300" />

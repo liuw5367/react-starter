@@ -6,7 +6,6 @@ import { isLogin } from '@/utils';
 
 import Content from './Content';
 import Header from './Header';
-import ProLayout from './ProLayout';
 import SiderBar from './Sidebar';
 
 export default function Index() {
@@ -21,21 +20,14 @@ export default function Index() {
     if (isLogin()) {
       message.success('已登陆');
       return <Navigate to={query.redirect || ''} />;
-    } else {
+    }
+    else {
       return <Outlet />;
     }
   }
 
   if (!isLogin()) {
     return <Navigate to={`/login?redirect=${location.pathname}${location.search ? `/${location.search}` : ''}`} />;
-  }
-
-  if (pathname.startsWith('/pro')) {
-    return (
-      <ProLayout>
-        <Outlet />
-      </ProLayout>
-    );
   }
 
   return (
