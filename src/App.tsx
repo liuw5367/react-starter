@@ -1,14 +1,15 @@
 import 'mac-scrollbar/dist/mac-scrollbar.css';
-import 'moment/dist/locale/zh-cn';
+import 'dayjs/locale/zh-cn';
 import './global.less';
 import 'uno.css';
-import 'antd/dist/antd.less';
+import 'antd/dist/reset.css';
+import 'core-js/full';
 
 import { ConfigProvider, message, notification } from 'antd';
-import zhCN from 'antd/lib/locale/zh_CN';
+import zhCN from 'antd/locale/zh_CN';
+import dayjs from 'dayjs';
 import { useSetAtom } from 'jotai';
 import { GlobalScrollbar } from 'mac-scrollbar';
-import moment from 'moment';
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useRoutes } from 'react-router-dom';
@@ -17,7 +18,7 @@ import { mobileAtom } from './atom';
 import { routes } from './config';
 import { APP_NAME } from './constants';
 
-moment.locale('zh-cn');
+dayjs.locale('zh-cn');
 notification.config({ duration: 2 });
 message.config({ duration: 2 });
 
@@ -26,7 +27,14 @@ export default function App() {
   useWindowSizeChange();
 
   return (
-    <ConfigProvider locale={zhCN}>
+    <ConfigProvider
+      locale={zhCN}
+      theme={{
+        token: {
+          colorPrimary: '#1777FF',
+        },
+      }}
+    >
       <Helmet>
         <title>{APP_NAME}</title>
       </Helmet>
@@ -44,7 +52,7 @@ function useWindowSizeChange() {
     function handleSizeChange() {
       const isMobile = window.matchMedia('(max-width: 639px)').matches;
       setMobile(isMobile);
-      console.log('window size change: ', isMobile);
+      console.log('window size changed:', [document.body.clientWidth, document.body.clientHeight]);
     }
 
     handleSizeChange();

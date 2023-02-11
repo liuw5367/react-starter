@@ -67,7 +67,7 @@ const Login = () => {
   }
 
   function handleForgetPassword() {
-    message.warn('请联系管理员修改密码');
+    message.warning('请联系管理员修改密码');
   }
 
   function renderForm() {

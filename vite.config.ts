@@ -62,7 +62,7 @@ export default ({ command }: ConfigEnv): UserConfigExport => ({
     proxy: {
       // '/api': {
       //   changeOrigin: true,
-      //   // target: 'http://10.128.1.57:8010',
+      //   // target: 'http://1.1.1.1:8888',
       //   // rewrite: (path) => path.replace(/^\/api/, ''),
       // },
     },

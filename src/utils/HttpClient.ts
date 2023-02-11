@@ -71,7 +71,7 @@ function processResponseData(request: XMLHttpRequest, data: ApiResponseType) {
     redirect();
   }
   else if (!data.success && checkNotSkip(path, data.code)) {
-    notification.close(request.responseURL || '/api');
+    notification.destroy(request.responseURL || '/api');
     notification.warning({
       key: request.responseURL || '/api',
       message: data.message || '请求错误',
@@ -125,7 +125,7 @@ function addResponseInterceptors(instance: AxiosInstance) {
       // console.log(request, response);
       // 这里用来处理http常见错误，进行全局提示
       const message = getCodeMessage(response.status);
-      notification.close(request.responseURL || '/api');
+      notification.destroy(request.responseURL || '/api');
       notification.warning({
         key: request.responseURL || '/api',
         message: message || '请求错误',

@@ -1,6 +1,6 @@
+import type { TableProps } from 'antd';
 import { Table } from 'antd';
 import type { TablePaginationConfig } from 'antd/lib/table/interface';
-import type { TableProps } from 'antd/lib/table/Table';
 
 type Props<T> = TableProps<T>;
 

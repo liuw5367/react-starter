@@ -37,7 +37,7 @@ export default function HeaderRight() {
     form.validateFields().then(async (values) => {
       const { password, newPassword, verifyNewPassword } = values;
       if (newPassword !== verifyNewPassword) {
-        message.warn('新密码不一致，请核对后重新输入');
+        message.warning('新密码不一致，请核对后重新输入');
         return;
       }
       const userId = '1';
