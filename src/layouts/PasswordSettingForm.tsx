@@ -16,7 +16,7 @@ export default function PasswordSettingForm(props: Props) {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div className="flex flex-col">
       <Form form={form} {...layout}>
         <Form.Item
           label="原密码"

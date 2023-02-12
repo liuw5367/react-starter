@@ -1,8 +1,6 @@
 import type { CSSProperties } from 'react';
 import React from 'react';
 
-import styles from './FilterLayout.module.less';
-
 interface Props {
   style?: CSSProperties;
   children?: React.ReactNode;
@@ -10,9 +8,9 @@ interface Props {
 }
 
 export default function FilterLayout(props: Props) {
-  const { style = {} } = props;
+  const { style } = props;
   return (
-    <div className={styles.layout} style={{ ...style }}>
+    <div className="filter-form" style={style}>
       <div>{props.children}</div>
       <div>{props.actions}</div>
     </div>
@@ -28,7 +26,7 @@ interface FilterProps {
 }
 
 export function Filter(props: FilterProps) {
-  const { label, style = {}, labelStyle = {} } = props;
+  const { label, style, labelStyle } = props;
 
   return (
     <div className="flex flex-row items-center" style={style}>

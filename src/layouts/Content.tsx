@@ -26,7 +26,7 @@ export default function Content(props: Props) {
   return (
     <Layout className="px-6 py-0 h-full overflow-auto">
       {breadcrumbVisible && (
-        <Breadcrumb style={{ marginTop: 12, marginBottom: 12 }}>
+        <Breadcrumb className="mt-3 mb-3">
           {breadcrumb.value?.map((v) => {
             const [text, link] = v;
             return <Breadcrumb.Item key={text}>{link ? <Link to={link}>{text}</Link> : <>{text}</>}</Breadcrumb.Item>;

@@ -40,6 +40,7 @@ export const routes: RouteItem[] = [
     children: [
       { index: true, element: get(() => import('../pages/index')) },
       { path: '/examples', element: get(() => import('../pages/examples')) },
+      { path: '/list', element: get(() => import('../pages/setting/user')) },
       {
         path: 'setting',
         name: 'setting',

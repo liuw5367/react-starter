@@ -14,7 +14,7 @@ import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useRoutes } from 'react-router-dom';
 
-import { mobileAtom } from './atom';
+import { menuExpandAtom, mobileAtom } from './atom';
 import { routes } from './config';
 import { APP_NAME } from './constants';
 
@@ -47,12 +47,16 @@ export default function App() {
 
 function useWindowSizeChange() {
   const setMobile = useSetAtom(mobileAtom);
+  const setMenuExpand = useSetAtom(menuExpandAtom);
 
   useEffect(() => {
     function handleSizeChange() {
+      console.log('window size changed:', [document.body.clientWidth, document.body.clientHeight]);
       const isMobile = window.matchMedia('(max-width: 639px)').matches;
       setMobile(isMobile);
-      console.log('window size changed:', [document.body.clientWidth, document.body.clientHeight]);
+      if (isMobile) {
+        setMenuExpand(false);
+      }
     }
 
     handleSizeChange();
@@ -61,5 +65,5 @@ function useWindowSizeChange() {
     return () => {
       window.removeEventListener('resize', handleSizeChange);
     };
-  }, [setMobile]);
+  }, [setMobile, setMenuExpand]);
 }

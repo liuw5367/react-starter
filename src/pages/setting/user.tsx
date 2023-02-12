@@ -1,4 +1,4 @@
-import { Button, Input, Select } from 'antd';
+import { Button, Form, Input, Select } from 'antd';
 import type { ColumnsType } from 'antd/lib/table';
 import { useEffect, useState } from 'react';
 
@@ -15,7 +15,7 @@ export default function Page() {
 
   const columns: ColumnsType<ListItem> = [
     { title: 'Name', dataIndex: 'name', render: (v) => v || '-' },
-    { title: 'Age', dataIndex: 'age', render: (v) => v || '-' },
+    { title: 'Age', dataIndex: 'age', render: (v) => v ?? '-' },
     { title: 'BirthDay', dataIndex: 'birth', render: (v) => v || '-' },
     { title: 'Email', dataIndex: 'email', render: (v) => v || '-' },
   ];
@@ -31,8 +31,8 @@ export default function Page() {
       const { list, current, total, size } = response.data;
       setDataSource(list);
       setPagination({ ...pagination, current, total, pageSize: size });
-      setLoading(false);
     }
+    setLoading(false);
   }
 
   function handleTableChange(page: any) {
@@ -42,7 +42,7 @@ export default function Page() {
   }
 
   return (
-    <div className="page-content">
+    <div className="p-6 overflow-auto bg-white">
       <FilterLayout
         actions={
           <>
@@ -66,6 +66,29 @@ export default function Page() {
           <Select style={{ width: 180 }} />
         </Filter>
       </FilterLayout>
+      <Form className="filter-form">
+        <div>
+          <Form.Item label="Name">
+            <Input className="w-60" />
+          </Form.Item>
+          <Form.Item label="Name">
+            <Select style={{ width: 180 }} />
+          </Form.Item>
+          <Form.Item label="Name">
+            <Input className="w-60" />
+          </Form.Item>
+          <Form.Item label="Name">
+            <Select style={{ width: 180 }} />
+          </Form.Item>
+        </div>
+        <div>
+          <Button>Submit</Button>
+          <Button type="primary">Add</Button>
+          <Button>Submit</Button>
+          <Button type="primary">Add</Button>
+        </div>
+      </Form>
+
       <TableComponent
         rowKey="id"
         columns={columns}

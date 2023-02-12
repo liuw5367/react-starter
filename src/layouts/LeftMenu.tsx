@@ -1,6 +1,6 @@
 import { HomeOutlined, LinkOutlined, NotificationOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Layout, Menu } from 'antd';
+import { Menu } from 'antd';
 import { useAtom } from 'jotai';
 import { isEmpty } from 'lodash';
 import { Link, useLocation } from 'react-router-dom';
@@ -57,21 +57,18 @@ export function convertToMenuItems(
     });
 }
 
-export default function SiderBar(props: { width?: number }) {
-  const { width = 200 } = props;
+export default function LeftMenu() {
   const { pathname } = useLocation();
   const [menus] = useAtom(menusAtom);
   const menuItems = convertToMenuItems(menus, getMenuIcon);
 
   return (
-    <Layout.Sider width={width} className="h-full">
-      <Menu
-        mode="inline"
-        selectedKeys={[pathname]}
-        defaultOpenKeys={['home']}
-        style={{ height: '100%', borderRight: 0 }}
-        items={menuItems}
-      />
-    </Layout.Sider>
+    <Menu
+      mode="inline"
+      selectedKeys={[pathname]}
+      defaultOpenKeys={['home']}
+      items={menuItems}
+      style={{ height: '100%', borderRight: 0 }}
+    />
   );
 }

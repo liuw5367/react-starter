@@ -1,4 +1,5 @@
 import { CrownOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icons';
+import type { MenuProps } from 'antd';
 import { Avatar, Dropdown, Form, message, Modal, Space } from 'antd';
 import { useState } from 'react';
 
@@ -50,39 +51,38 @@ export default function HeaderRight() {
     });
   }
 
+  const menu: MenuProps = {
+    items: [
+      {
+        key: 'password',
+        label: (
+          <Space onClick={() => handleMenuClick('password')}>
+            <SettingOutlined />
+            设置密码
+          </Space>
+        ),
+      },
+      { type: 'divider' },
+      {
+        key: 'logout',
+        label: (
+          <Space onClick={() => handleMenuClick('logout')}>
+            <LogoutOutlined />
+            退出登录
+          </Space>
+        ),
+      },
+    ],
+  };
+
   return (
     <div>
-      <Dropdown
-        placement="bottomRight"
-        menu={{
-          items: [
-            {
-              key: 'password',
-              label: (
-                <Space onClick={() => handleMenuClick('password')}>
-                  <SettingOutlined />
-                  设置密码
-                </Space>
-              ),
-            },
-            { type: 'divider' },
-            {
-              key: 'logout',
-              label: (
-                <Space onClick={() => handleMenuClick('logout')}>
-                  <LogoutOutlined />
-                  退出登录
-                </Space>
-              ),
-            },
-          ],
-        }}
-      >
+      <Dropdown placement="bottomRight" menu={menu}>
         <Avatar
           shape="circle"
           size="small"
-          style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}
           icon={<CrownOutlined />}
+          style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}
         />
       </Dropdown>
       <Modal

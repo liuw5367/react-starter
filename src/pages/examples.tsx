@@ -28,6 +28,7 @@ export default function Examples() {
         <div
           className="bg-yellow-300 w-20 h-20 hover:w-40 transition-all duration-300"
           style={{ width: expand ? 300 : 50 }}
+          onClick={() => setExpand(!expand)}
         />
       </div>
     </div>
