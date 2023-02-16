@@ -13,6 +13,8 @@
     "lint:fix": "eslint . --fix --quiet",
     "lint:style": "stylelint \"src/**/*.{css,scss,sass,less}\" --quiet --fix",
     "prettier": "prettier --write **/*.{js,jsx,tsx,ts,less,md,json}",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
     "type-check": "tsc"
   },
   "dependencies": {
@@ -52,6 +54,7 @@
     "@unocss/transformer-variant-group": "^0.49.4",
     "@vitejs/plugin-legacy": "^4.0.1",
     "@vitejs/plugin-react": "^3.1.0",
+    "@vitest/coverage-c8": "^0.28.5",
     "eslint": "^8.34.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "husky": "^8.0.3",
@@ -74,7 +77,8 @@
     "unocss": "^0.49.4",
     "vite": "^4.1.1",
     "vite-plugin-mock": "^2.9.6",
-    "vite-plugin-svgr": "^2.4.0"
+    "vite-plugin-svgr": "^2.4.0",
+    "vitest": "^0.28.5"
   },
   "lint-staged": {
     "*.{jsx,md,json}": [
