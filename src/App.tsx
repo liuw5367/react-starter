@@ -1,4 +1,3 @@
-import 'mac-scrollbar/dist/mac-scrollbar.css';
 import 'dayjs/locale/zh-cn';
 import './global.less';
 import 'uno.css';
@@ -9,7 +8,6 @@ import { ConfigProvider, message, notification } from 'antd';
 import zhCN from 'antd/locale/zh_CN';
 import dayjs from 'dayjs';
 import { useSetAtom } from 'jotai';
-import { GlobalScrollbar } from 'mac-scrollbar';
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useRoutes } from 'react-router-dom';
@@ -38,8 +36,6 @@ export default function App() {
       <Helmet>
         <title>{APP_NAME}</title>
       </Helmet>
-      {/* macos style scroll bar */}
-      <GlobalScrollbar />
       {route}
     </ConfigProvider>
   );
