@@ -5,7 +5,7 @@ import type { TablePaginationConfig } from 'antd/lib/table/interface';
 type Props<T> = TableProps<T>;
 
 export default function TableComponent<T extends object = any>(props: Props<T>) {
-  const { dataSource = [], pagination = {}, style = {}, ...otherProps } = props;
+  const { pagination = {}, ...otherProps } = props;
 
   let pageConfigs: TablePaginationConfig | false = false;
 
@@ -22,7 +22,5 @@ export default function TableComponent<T extends object = any>(props: Props<T>) 
     };
   }
 
-  return (
-    <Table<T> style={{ minWidth: 700, ...style }} dataSource={dataSource} pagination={pageConfigs} {...otherProps} />
-  );
+  return <Table<T> pagination={pageConfigs} {...otherProps} />;
 }

@@ -1,3 +1,5 @@
+import type { AliasToken } from 'antd/es/theme/interface';
+
 export * from './rule';
 
 export const APP_NAME = 'AppName';
@@ -12,8 +14,6 @@ export const FORMAT_TIME_HM = 'HH:mm';
 
 export const CACHE_TOKEN = 'token';
 
-export const Theme = {
-  COLOR: {
-    primary: '#649AFF',
-  },
+export const Theme: Partial<AliasToken> = {
+  colorPrimary: '#1777FF',
 };

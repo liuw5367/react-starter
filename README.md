@@ -29,11 +29,7 @@ React 后台管理项目模板。
 
 Dva 是 umi 体系里的，之前用 umi 的时候用的。
 
-Dva 使用 react-route-dom v5 版本。
-
-Umi 升级 4.0 使用了 react-route-dom v6，用的包是 dva-core, 用来规避 dva 的版本问题。
-
-Dva 基于 redux、saga，但是因为 saga 使用 generator 导致 ts 推断不好，这里重新定义了类型：
+Dva 基于 redux、saga，但是因为 saga 使用 generator 导致 ts 推断不好，这里重新定义了 Model 类型，支持了一下功能：
 
 1. 支持 dispatch 的 type 和 payload 参数校验
 2. 支持 dispatch 返回值类型

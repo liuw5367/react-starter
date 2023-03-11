@@ -1,6 +1,5 @@
 import React from 'react';
 import type { RouteObject } from 'react-router-dom';
-import { Route, Routes } from 'react-router-dom';
 
 export type RouteItem = RouteObject & {
   /** 面包屑使用 */
@@ -21,16 +20,6 @@ function get(fn: () => Promise<any>) {
 }
 
 const NotFoundRoute: RouteItem = { path: '*', element: get(() => import('../pages/404')) };
-
-const routes1 = (
-  <Routes>
-    <Route path="/" element={get(() => import('../layouts/index'))}>
-      <Route index element={get(() => import('../pages/index'))} />
-      <Route path="*" element={get(() => import('../pages/404'))} />
-    </Route>
-    <Route path="login" element={get(() => import('../pages/login/index'))} />
-  </Routes>
-);
 
 export const routes: RouteItem[] = [
   { path: '/login', element: get(() => import('../pages/login/index')) },

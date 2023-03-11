@@ -2,7 +2,6 @@ import { Button, Form, Input, Select } from 'antd';
 import type { ColumnsType } from 'antd/lib/table';
 import { useEffect, useState } from 'react';
 
-import FilterLayout, { Filter } from '@/components/FilterLayout';
 import TableComponent from '@/components/TableComponent';
 import type { ListItem } from '@/services/list';
 import { queryList } from '@/services/list';
@@ -43,29 +42,6 @@ export default function Page() {
 
   return (
     <div className="p-6 overflow-auto bg-white">
-      <FilterLayout
-        actions={
-          <>
-            <Button>Submit</Button>
-            <Button type="primary">Add</Button>
-            <Button>Submit</Button>
-            <Button type="primary">Add</Button>
-          </>
-        }
-      >
-        <Filter label="Name:">
-          <Input className="w-60" />
-        </Filter>
-        <Filter label="Name:">
-          <Select style={{ width: 180 }} />
-        </Filter>
-        <Filter label="Name:">
-          <Input className="w-60" />
-        </Filter>
-        <Filter label="Name:">
-          <Select style={{ width: 180 }} />
-        </Filter>
-      </FilterLayout>
       <Form className="filter-form">
         <div>
           <Form.Item label="Name">

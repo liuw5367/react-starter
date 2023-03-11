@@ -23,10 +23,12 @@ module.exports = {
         allowSeparatedGroups: false,
       },
     ],
-    // --- @antfu 规则修改 ---
+    // --- END @antfu 规则修改 END ---
 
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
+
+    'react/display-name': 'off',
 
     // 'no-unused-vars': ['off', { argsIgnorePattern: '^_' }], // 忽略 _ 开头的变量
     // '@typescript-eslint/explicit-function-return-type': 'off',

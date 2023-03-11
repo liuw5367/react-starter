@@ -32,19 +32,25 @@ export default function Index() {
     }
   }
 
-  if (!isLogin()) {
-    return <Navigate to={`/login?redirect=${location.pathname}${location.search ? `/${location.search}` : ''}`} />;
-  }
+  // if (!isLogin()) {
+  //   return <Navigate to={`/login?redirect=${location.pathname}${location.search ? `/${location.search}` : ''}`} />;
+  // }
 
   return (
-    <Layout style={{ flexDirection: 'column' }}>
-      <Header />
-      <Layout style={{ width: '100%', height: 'calc(100vh - var(--headerHeight))' }}>
-        {!isMobile && (
-          <Layout.Sider width={200} className="h-full" collapsed={!menuExpand}>
-            <LeftMenu />
-          </Layout.Sider>
-        )}
+    <Layout className="w-full h-full">
+      {!isMobile && (
+        <Layout.Sider
+          width={200}
+          collapsed={!menuExpand}
+          className="h-full z-10 fixed pt-$headerHeight overflow-hidden"
+          style={{ backgroundColor: 'white' }}
+        >
+          <LeftMenu />
+        </Layout.Sider>
+      )}
+      <Layout className="overflow-auto">
+        <Header />
+        <div className="h-$headerHeight" />
         <Content>{children}</Content>
       </Layout>
     </Layout>

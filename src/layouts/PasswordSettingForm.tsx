@@ -10,14 +10,9 @@ interface Props {
 export default function PasswordSettingForm(props: Props) {
   const { form } = props;
 
-  const layout = {
-    labelCol: { span: 6 },
-    wrapperCol: { span: 14 },
-  };
-
   return (
     <div className="flex flex-col">
-      <Form form={form} {...layout}>
+      <Form form={form} labelCol={{ span: 6 }} wrapperCol={{ span: 14 }}>
         <Form.Item
           label="原密码"
           name="password"

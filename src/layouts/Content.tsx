@@ -24,7 +24,7 @@ export default function Content(props: Props) {
   const breadcrumbVisible = breadcrumb.value && breadcrumb.value.length > 1;
 
   return (
-    <Layout className="px-6 py-0 h-full overflow-auto">
+    <Layout className="px-6 py-0">
       {breadcrumbVisible && (
         <Breadcrumb className="mt-3 mb-3">
           {breadcrumb.value?.map((v) => {
@@ -36,7 +36,6 @@ export default function Content(props: Props) {
       <Layout.Content className="bg-white m-0" style={{ marginTop: breadcrumbVisible ? 0 : 24 }}>
         {children}
       </Layout.Content>
-      {/* <Layout.Footer className="text-center py-4 text-xs">Footer</Layout.Footer> */}
     </Layout>
   );
 }

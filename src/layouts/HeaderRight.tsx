@@ -2,6 +2,7 @@ import { CrownOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icon
 import type { MenuProps } from 'antd';
 import { Avatar, Dropdown, Form, message, Modal, Space } from 'antd';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { logout, modifyPassword } from '@/services/user';
 import { clearCacheOnLogout } from '@/utils';
@@ -12,6 +13,7 @@ export default function HeaderRight() {
   const [logoutVisible, setLogoutVisible] = useState(false);
   const [form] = Form.useForm();
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const navigate = useNavigate();
 
   function handleMenuClick(key: string) {
     if (key === 'logout') {
@@ -26,7 +28,7 @@ export default function HeaderRight() {
     setLogoutVisible(false);
     await logout();
     clearCacheOnLogout();
-    window.location.href = '/';
+    navigate('/');
   }
 
   function handlePasswordCancel() {
