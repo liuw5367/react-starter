@@ -1,10 +1,11 @@
+import { resolve } from 'node:path';
+
 import AntdIcons from '@iconify-json/ant-design/icons.json';
 import PhIcons from '@iconify-json/ph/icons.json';
 import transformerDirectives from '@unocss/transformer-directives';
 import transformerVariantGroup from '@unocss/transformer-variant-group';
 import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
-import { resolve } from 'path';
 import { presetAttributify, presetIcons, presetUno } from 'unocss';
 import Unocss from 'unocss/vite';
 import type { ConfigEnv, UserConfigExport } from 'vite';

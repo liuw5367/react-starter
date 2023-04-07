@@ -30,8 +30,8 @@ export default function Header() {
 
   return (
     <Layout.Header
-      className="fixed z-10 top-0 left-0 right-0 w-full flex flex-row items-center shadow"
-      style={{ height: 'var(--headerHeight)', padding: '0px 24px', backgroundColor: token.colorBgContainer }}
+      className="fixed z-10 top-0 left-0 right-0 w-full h-$headerHeight flex flex-row items-center shadow px-6"
+      style={{ backgroundColor: token.colorBgContainer }}
     >
       <div className="w-[152px] h-8 mr-6 flex items-center justify-center text-white bg-black/50">{APP_NAME}</div>
       {renderExpandIcon()}

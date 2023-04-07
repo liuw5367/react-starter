@@ -42,8 +42,7 @@ export default function Index() {
         <Layout.Sider
           width={200}
           collapsed={!menuExpand}
-          className="h-full z-10 fixed pt-$headerHeight overflow-hidden"
-          style={{ backgroundColor: 'white' }}
+          className="h-full z-10 fixed pt-$headerHeight overflow-hidden !bg-white"
         >
           <LeftMenu />
         </Layout.Sider>
