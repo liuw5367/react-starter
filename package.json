@@ -1,13 +1,6 @@
 {
-  "name": "react_template",
+  "name": "app",
   "version": "v1.0.0",
-  "description": "Template for React",
-  "contributors": [
-    {
-      "name": "liuw5367",
-      "email": "liuw5367@gmail.com"
-    }
-  ],
   "scripts": {
     "build": "umi build",
     "dev": "umi dev",

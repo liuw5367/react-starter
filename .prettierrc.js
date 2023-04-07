@@ -1,10 +1,15 @@
+/**
+ * @type {import('prettier').Config}
+ */
 module.exports = {
+  printWidth: 120,
   tabWidth: 2,
   singleQuote: true,
   trailingComma: 'all',
-  printWidth: 120,
   proseWrap: 'never',
   endOfLine: 'lf',
-  // 函数添加括号
+  // 箭头函数单个参数的情况是否省略括号，always是总是带括号
   arrowParens: 'always',
+  overrides: [{ "files": ".prettierrc", "options": { "parser": "json" } }],
+  plugins: ["prettier-plugin-organize-imports", "prettier-plugin-packagejson"]
 };
