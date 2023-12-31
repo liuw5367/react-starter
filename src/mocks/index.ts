@@ -37,9 +37,11 @@ export default <MockMethod[]>[
   {
     url: '/api/codeTest',
     method: 'get',
-    response: {
-      code: -1,
-      message: 'ERROR',
+    response: () => {
+      return {
+        code: -1,
+        message: 'ERROR',
+      }
     },
     // response: () => ({
     //   code: 401,
