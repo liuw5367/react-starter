@@ -1,19 +1,19 @@
-import type { MockMethod, Recordable } from 'vite-plugin-mock';
+import type { MockMethod, Recordable } from 'vite-plugin-mock'
 
 interface Request {
-  url: Recordable;
-  body: Recordable;
-  query: Recordable;
-  headers: Recordable;
+  url: Recordable
+  body: Recordable
+  query: Recordable
+  headers: Recordable
 }
 
-type ResponseFunction = (request: Request) => unknown;
+type ResponseFunction = (request: Request) => unknown
 
 /**
  * 添加函数参数提示，但是不支持直接返回对象了，TS 会报错
  */
 export interface Method extends MockMethod {
-  response?: ResponseFunction;
+  response?: ResponseFunction
 }
 
 export default <MockMethod[]>[
@@ -46,4 +46,4 @@ export default <MockMethod[]>[
     //   message: 'ERROR',
     // }),
   },
-];
+]

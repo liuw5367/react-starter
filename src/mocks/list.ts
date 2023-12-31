@@ -1,6 +1,6 @@
-import { Random } from 'mockjs';
+import { Random } from 'mockjs'
 
-import type { Method } from '.';
+import type { Method } from '.'
 
 export default <Method[]>[
   {
@@ -8,10 +8,10 @@ export default <Method[]>[
     method: 'get',
     timeout: 2000,
     response: ({ query }) => {
-      const { current = 1, size = 10 } = query;
-      const total = 12345;
-      const pageNum = Number(current);
-      const pageSize = Number(size);
+      const { current = 1, size = 10 } = query
+      const total = 12345
+      const pageNum = Number(current)
+      const pageSize = Number(size)
       return {
         code: 0,
         message: 'ok',
@@ -29,7 +29,7 @@ export default <Method[]>[
           size: pageSize,
           current: pageNum,
         },
-      };
+      }
     },
   },
-];
+]

@@ -3,8 +3,6 @@
     "antfu.unocss",
     "antfu.iconify",
     "EditorConfig.EditorConfig",
-    "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint",
-    "stylelint.vscode-stylelint"
+    "dbaeumer.vscode-eslint"
   ]
 }

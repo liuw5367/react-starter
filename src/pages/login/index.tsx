@@ -1,65 +1,64 @@
-import { Button, Checkbox, Form, Input, message } from 'antd';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Button, Checkbox, Form, Input, message } from 'antd'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { APP_NAME, CACHE_TOKEN, RULE_PASSWORD, RULE_PASSWORD_LENGTH, RULE_USERNAME } from '@/constants';
-import { useQuery } from '@/hooks';
-import { login } from '@/services/user';
+import { APP_NAME, CACHE_TOKEN, RULE_PASSWORD, RULE_PASSWORD_LENGTH, RULE_USERNAME } from '@/constants'
+import { useQuery } from '@/hooks'
+import { login } from '@/services/user'
 
 interface FormValue {
-  username: string;
-  password: string;
-  remember?: boolean;
+  username: string
+  password: string
+  remember?: boolean
 }
 
-const Login = () => {
-  const navigate = useNavigate();
-  const { query } = useQuery();
-  const [isError, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [form] = Form.useForm();
+export default function Login() {
+  const navigate = useNavigate()
+  const query = useQuery()
+  const [isError, setError] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [form] = Form.useForm()
 
   async function handleSubmit(values: FormValue) {
-    const { username, password } = values;
+    const { username, password } = values
     // password = CryptoJs.MD5(password).toString();
 
-    setLoading(true);
-    const response = await login({ username, password });
-    setLoading(false);
+    setLoading(true)
+    const response = await login({ username, password })
+    setLoading(false)
 
-    const token = response.data;
+    const token = response.data
     if (!response || response.code !== 0 || !token) {
-      setError(true);
-      return;
+      setError(true)
+      return
     }
-    localStorage.setItem(CACHE_TOKEN, token);
-    navigate(query.redirect || '/');
+    localStorage.setItem(CACHE_TOKEN, token)
+    navigate(query.redirect || '/')
   }
 
   function handleFinish(values: FormValue) {
-    const { username, password, remember } = values;
+    const { username, password, remember } = values
     if (remember) {
-      localStorage.setItem('login-remember', '1');
-      localStorage.setItem('login-username', username);
-      localStorage.setItem('login-password', password);
+      localStorage.setItem('login-remember', '1')
+      localStorage.setItem('login-username', username)
+      localStorage.setItem('login-password', password)
     }
     else {
-      localStorage.setItem('login-remember', '');
-      localStorage.setItem('login-username', '');
-      localStorage.setItem('login-password', '');
+      localStorage.setItem('login-remember', '')
+      localStorage.setItem('login-username', '')
+      localStorage.setItem('login-password', '')
     }
-    const params = { username, password };
-    handleSubmit(params);
+    const params = { username, password }
+    handleSubmit(params)
   }
 
   function handleChange() {
-    if (isError) {
-      setError(true);
-    }
+    if (isError)
+      setError(true)
   }
 
   function handleForgetPassword() {
-    message.warning('请联系管理员修改密码');
+    message.warning('请联系管理员修改密码')
   }
 
   function renderForm() {
@@ -98,7 +97,7 @@ const Login = () => {
           <Checkbox>记住密码</Checkbox>
         </Form.Item>
       </Form>
-    );
+    )
   }
 
   return (
@@ -108,7 +107,5 @@ const Login = () => {
         {renderForm()}
       </div>
     </div>
-  );
+  )
 };
-
-export default Login;

@@ -1,4 +1,4 @@
-import type { MenuItem } from '@/types';
+import type { MenuItem } from '@/types'
 
 export const menuConfig: MenuItem[] = [
   { title: 'Home', link: '/', key: '/' },
@@ -23,4 +23,4 @@ export const menuConfig: MenuItem[] = [
       },
     ],
   },
-];
+]

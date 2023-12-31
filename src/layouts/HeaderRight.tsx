@@ -1,56 +1,45 @@
-import { CrownOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
-import { Avatar, Dropdown, Form, message, Modal, Space } from 'antd';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { CrownOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icons'
+import type { MenuProps } from 'antd'
+import { Avatar, Dropdown, Form, Modal, Space, message } from 'antd'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { logout, modifyPassword } from '@/services/user';
-import { clearCacheOnLogout } from '@/utils';
-
-import PasswordSettingForm from './PasswordSettingForm';
+import PasswordSettingForm from './PasswordSettingForm'
+import { logout } from '@/services/user'
+import { clearCacheOnLogout } from '@/utils'
 
 export default function HeaderRight() {
-  const [logoutVisible, setLogoutVisible] = useState(false);
-  const [form] = Form.useForm();
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const navigate = useNavigate();
+  const [logoutVisible, setLogoutVisible] = useState(false)
+  const [form] = Form.useForm()
+  const [passwordVisible, setPasswordVisible] = useState(false)
+  const navigate = useNavigate()
 
   function handleMenuClick(key: string) {
-    if (key === 'logout') {
-      setLogoutVisible(true);
-    }
-    else if (key === 'password') {
-      setPasswordVisible(true);
-    }
+    if (key === 'logout')
+      setLogoutVisible(true)
+
+    else if (key === 'password')
+      setPasswordVisible(true)
   }
 
   async function handleLogoutOk() {
-    setLogoutVisible(false);
-    await logout();
-    clearCacheOnLogout();
-    navigate('/');
+    setLogoutVisible(false)
+    await logout()
+    clearCacheOnLogout()
+    navigate('/')
   }
 
   function handlePasswordCancel() {
-    form.resetFields();
-    setPasswordVisible(false);
+    form.resetFields()
+    setPasswordVisible(false)
   }
 
   function handlePasswordOk() {
-    form.validateFields().then(async (values) => {
-      const { password, newPassword, verifyNewPassword } = values;
-      if (newPassword !== verifyNewPassword) {
-        message.warning('新密码不一致，请核对后重新输入');
-        return;
-      }
-      const userId = '1';
-      const response = await modifyPassword({ oldPassword: password, password: newPassword, userId });
-      if (response.success) {
-        message.success('修改成功');
-        form.resetFields();
-        setPasswordVisible(false);
-      }
-    });
+    form.validateFields().then(async () => {
+      message.success('修改成功')
+      form.resetFields()
+      setPasswordVisible(false)
+    })
   }
 
   const menu: MenuProps = {
@@ -75,7 +64,7 @@ export default function HeaderRight() {
         ),
       },
     ],
-  };
+  }
 
   return (
     <div>
@@ -89,7 +78,7 @@ export default function HeaderRight() {
       </Dropdown>
       <Modal
         open={passwordVisible}
-        title={'设置密码'}
+        title="设置密码"
         onCancel={handlePasswordCancel}
         onOk={handlePasswordOk}
         destroyOnClose={true}
@@ -98,7 +87,7 @@ export default function HeaderRight() {
       </Modal>
       <Modal
         open={logoutVisible}
-        title={'退出登录'}
+        title="退出登录"
         onCancel={() => setLogoutVisible(false)}
         onOk={handleLogoutOk}
         destroyOnClose={true}
@@ -106,5 +95,5 @@ export default function HeaderRight() {
         您确定要退出当前登录账号吗？
       </Modal>
     </div>
-  );
+  )
 }

@@ -1,26 +1,24 @@
-import type { MenuProps } from 'antd';
-import { Menu } from 'antd';
-import { useAtom } from 'jotai';
-import { isEmpty } from 'lodash';
-import { Link, useLocation } from 'react-router-dom';
+import type { MenuProps } from 'antd'
+import { Menu } from 'antd'
+import { isEmpty } from 'lodash'
+import { Link, useLocation } from 'react-router-dom'
 
-import { menusAtom } from '@/atom';
-import type { MenuItem } from '@/types';
+import type { MenuItem } from '@/types'
+import { useGlobalStore } from '@/stores'
 
 export function convertToMenuItems(
   config: MenuItem[] = [],
   isChild = false,
   onClick?: (v: MenuItem) => void,
 ): MenuProps['items'] {
-  if (!config || config.length === 0) {
-    return undefined;
-  }
+  if (!config || config.length === 0)
+    return undefined
 
   return config
-    .filter((v) => !v.disabled)
+    .filter(v => !v.disabled)
     .map((item) => {
-      const { key, title, link, children } = item;
-      const childrenItems = convertToMenuItems(children, true, onClick);
+      const { key, title, link, children } = item
+      const childrenItems = convertToMenuItems(children, true, onClick)
 
       return {
         key,
@@ -31,20 +29,20 @@ export function convertToMenuItems(
             )
           : onClick
             ? (
-          <a onClick={() => onClick(item)}>{title}</a>
+              <a onClick={() => onClick(item)}>{title}</a>
               )
             : (
-          <Link to={link}>{title}</Link>
+              <Link to={link}>{title}</Link>
               ),
         children: childrenItems,
-      };
-    });
+      }
+    })
 }
 
 export default function LeftMenu() {
-  const { pathname } = useLocation();
-  const [menus] = useAtom(menusAtom);
-  const menuItems = convertToMenuItems(menus);
+  const { pathname } = useLocation()
+  const menus = useGlobalStore(s => s.menus)
+  const menuItems = convertToMenuItems(menus)
 
   return (
     <Menu
@@ -54,5 +52,5 @@ export default function LeftMenu() {
       items={menuItems}
       style={{ height: '100%', borderRight: 0 }}
     />
-  );
+  )
 }
