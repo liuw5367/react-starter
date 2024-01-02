@@ -3,6 +3,8 @@ import './global.css'
 import 'uno.css'
 import 'antd/dist/reset.css'
 import 'core-js/full'
+import 'whatwg-fetch'
+import 'abortcontroller-polyfill/dist/polyfill-patch-fetch'
 
 import { StyleProvider } from '@ant-design/cssinjs'
 import { ConfigProvider } from 'antd'
