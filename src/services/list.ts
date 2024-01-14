@@ -17,12 +17,6 @@ export async function queryList(params: ListRequest) {
   })
 }
 
-export async function test() {
-  return request('/codeTest', {
-    method: 'GET',
-  })
-}
-
 export async function exportFile() {
   return downloadFile('/download')
 }

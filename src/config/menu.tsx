@@ -18,7 +18,7 @@ export const menuConfig: MenuItem[] = [
     children: [
       {
         title: 'Github',
-        link: 'https://github.com/liuw5367/react-template',
+        link: 'https://github.com/liuw5367/react-starter',
         key: 'Github',
       },
     ],

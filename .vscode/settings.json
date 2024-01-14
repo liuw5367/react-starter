@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["antd", "Vitesse", "Vite", "unocss", "vitest", "demi", "antfu", "iconify", "intlify", "vitejs", "unplugin", "pnpm"],
+  "cSpell.words": ["zustand", "antd", "Vitesse", "Vite", "unocss", "vitest", "demi", "antfu", "iconify", "intlify", "vitejs", "unplugin", "pnpm"],
 
   // Enable the ESlint flat config support
   "eslint.experimental.useFlatConfig": true,

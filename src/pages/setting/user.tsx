@@ -41,7 +41,7 @@ export default function Page() {
   }
 
   return (
-    <div className="overflow-auto bg-white p-6">
+    <div className="overflow-auto p-6">
       <Form className="filter-form">
         <div>
           <Form.Item label="Name">

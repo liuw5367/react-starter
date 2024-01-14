@@ -32,7 +32,13 @@ export default function Content(props: Props) {
           })}
         </Breadcrumb>
       )}
-      <Layout.Content className="m-0 bg-white" style={{ marginTop: breadcrumbVisible ? 0 : 24 }}>
+      <Layout.Content
+        className="m-0"
+        style={{
+          backgroundColor: 'var(--color-bg-content)',
+          marginTop: breadcrumbVisible ? 0 : 24,
+        }}
+      >
         {children}
       </Layout.Content>
     </Layout>

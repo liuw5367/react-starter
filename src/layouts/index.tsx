@@ -1,6 +1,7 @@
 import { Layout, message } from 'antd'
-import { Navigate, Outlet, useLocation } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
 
+import React from 'react'
 import Content from './Content'
 import Header from './Header'
 import LeftMenu from './LeftMenu'
@@ -8,7 +9,7 @@ import { useQuery, useWindowSizeChange } from '@/hooks'
 import { isLogin } from '@/utils'
 import { useGlobalStore } from '@/stores'
 
-export default function Index() {
+export default function Index(props: { children?: React.ReactNode }) {
   const location = useLocation()
   const { query } = useQuery()
   useWindowSizeChange()
@@ -20,7 +21,7 @@ export default function Index() {
   const isMobile = useGlobalStore(s => s.isMobile)
   const menuExpand = useGlobalStore(s => s.menuExpand)
 
-  const children = <Outlet />
+  const children = props.children
 
   if (pathname === '/login') {
     if (isLogin()) {

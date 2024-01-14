@@ -7,8 +7,10 @@ import { useNavigate } from 'react-router-dom'
 import PasswordSettingForm from './PasswordSettingForm'
 import { logout } from '@/services/user'
 import { clearCacheOnLogout } from '@/utils'
+import { useTheme } from '@/hooks'
 
 export default function HeaderRight() {
+  const { toggleDark, setTheme } = useTheme()
   const [logoutVisible, setLogoutVisible] = useState(false)
   const [form] = Form.useForm()
   const [passwordVisible, setPasswordVisible] = useState(false)
@@ -67,7 +69,20 @@ export default function HeaderRight() {
   }
 
   return (
-    <div>
+    <div className="flex items-center space-x-4">
+      <div>
+        { `v${__APP_VERSION__}` }
+      </div>
+      <div className="my-4 flex items-center space-x-4">
+        <div className="cursor-pointer" onClick={toggleDark}>
+          <div className="i-carbon-sun dark:i-carbon-moon" />
+        </div>
+
+        <div className="flex cursor-pointer items-center" title="Auto" onClick={() => setTheme('auto')}>
+          <div className="i-carbon-window-auto" />
+          Auto
+        </div>
+      </div>
       <Dropdown placement="bottomRight" menu={menu}>
         <Avatar
           shape="circle"

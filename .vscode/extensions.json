@@ -1,8 +1,10 @@
 {
   "recommendations": [
-    "antfu.unocss",
+    "vue.volar",
+    "Vue.vscode-typescript-vue-plugin",
+    "dbaeumer.vscode-eslint",
+    "antfu.goto-alias",
     "antfu.iconify",
-    "EditorConfig.EditorConfig",
-    "dbaeumer.vscode-eslint"
+    "antfu.unocss"
   ]
 }

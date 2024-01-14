@@ -14,5 +14,6 @@ export function useQuery() {
   useEffect(() => {
     setQuery(qs.parse(location.search))
   }, [])
+
   return query
 }
